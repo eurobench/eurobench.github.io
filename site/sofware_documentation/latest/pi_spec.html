@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Performance Indicator Specification :: Eurobench framework documentation</title>
+    <link rel="canonical" href="https://antora.gitlab.io/demo/docs-site/sofware_documentation/latest/pi_spec.html">
+    <meta name="keywords" content="AsciiDoc">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://antora.gitlab.io/demo/docs-site">Eurobench framework documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <!--<div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div> -->
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="sofware_documentation" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Software documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Welcome</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="data_format.html">Input data format</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="model.html">Human model</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="pi_spec.html">Performance indicator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="template.html">Protocol template</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Software documentation</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Software documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Software documentation</a></li>
+    <li><a href="pi_spec.html">Performance indicator</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/aremazeilles/eurobench_documentation/edit/antora/modules/ROOT/pages/pi_spec.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Performance Indicator Specification</h1>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Performance Indicators (or <code>PIs</code>) refer to the algorithms used to compute performance metrics for a given experiment and following pre-defined protocol.
+In the context of Eurobench, <code>PIs</code> are the bases for later performance comparisons between different wearable robotic devices (or humanoids) which have performed comparable experiments.</p>
+</div>
+<div class="paragraph">
+<p>There exists:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>General PIs related to system ability:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Motion ability</em>: Successful task time, Maximum cadence, Mechanical energy, &#8230;&#8203;</p>
+</li>
+<li>
+<p><em>Human Robot Interaction</em>: Comfort, Muscle fatigue, Metabolic cost, &#8230;&#8203;</p>
+</li>
+<li>
+<p><em>Adaptability</em>: Versatility, Task adaptability,</p>
+</li>
+<li>
+<p><em>Cognitive</em>: Intention decoding, Cognitive effort</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Scenario specific PIs</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Scenario <em>Walking on slopes</em>: Slope angle the subject can walk up, Maximum velocity the subject can walk up, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Scenario <em>Walking on stairs</em>: Step height that the subject can walk up, Maximum number of successive stairs the subject can walk up, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Scenario <em>Overcoming obstacles</em>: maximum height of an obstacle the subject can walk over, &#8230;&#8203;</p>
+</li>
+<li>
+<p>Scenario <em>Picking and carrying objects</em>: Weight of the object which can be picked up and carried, Walking speed while carrying an object, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_a_bit_of_context_the_pi_manager"><a class="anchor" href="#_a_bit_of_context_the_pi_manager"></a>1.1. A bit of context: the PI Manager</h3>
+<div class="paragraph">
+<p>A key component of the Benchmarking Software is the <code>PI Manager</code>.
+It is called every time a new experiment is uploaded to the Benchmarking System.
+The objective of the <code>PI Manager</code> is to orchestrate the computation of the performance metrics for that experiment.</p>
+</div>
+<div class="paragraph">
+<p>The overall interaction scheme is described on the following figure.
+We assume here that an experiment has just been uploaded to the Benchmarking Software, i.e. all experimental data are already uploaded and stored into the database.</p>
+</div>
+<div class="paragraph">
+<p>The remaining operation is the scoring of the experiment, which is for what is triggered the PI Mananger.
+The successive operations conducted by the PI Manager are the followings:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>From the Experiment ID, the PI Manager gets access from the database to the Protocol this experiment is related to.</p>
+</li>
+<li>
+<p>From the Protocol ID, the PI Manager gets the list of PI algorithms associated to it, along with the PIs calculated by each of theses algorithms.</p>
+</li>
+<li>
+<p>For each algorithm, the PI Manager gets access to the Algorithm Docker identifier</p>
+</li>
+<li>
+<p>From the Experiment ID, the PI Manager locates in the datafile system the folder related to that experiment.
+It contains all the <em>Pre-Processed files</em> uploaded by the experimenter.</p>
+</li>
+<li>
+<p>From the Datafile system, the PI Manager can access to all the experiment files required as parameters / input files to run the algorithm.</p>
+</li>
+</ol>
+</div>
+<div id="fig:pim_interact" class="imageblock text-center">
+<div class="content">
+<img src="_images/pi_manager_interaction.png" alt="pi manager interaction">
+</div>
+<div class="title">Figure 1. Global interaction of the PI Manager with the database to collect the experimental data</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As mentioned, each of the PI routines are encapsulated within a docker image.
+      It avoids any dependency conflicts in between the different PI code implementation, and isolates the PI Manager machine from the PI computation effort.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The PI Manager has somehow (to be clarified) a local copy of the experiment files, which can be organized as on the left picture of the following figure.</p>
+</div>
+<div id="fig:pim_loop" class="imageblock text-center">
+<div class="content">
+<img src="_images/pi_manager_loop.png" alt="pi manager loop">
+</div>
+<div class="title">Figure 2. Overall PI Manager processing loop</div>
+</div>
+<div class="paragraph">
+<p>We assume that each run (iteration of the experiment with similar conditions or independent variables), is described by a set of <em>Pre-processed files</em>.</p>
+</div>
+<div class="paragraph">
+<p>Then The PI Manager loops on each run and docker:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For each run</p>
+<div class="ulist">
+<ul>
+<li>
+<p>gather all pre-processed files associated to that run, together to any condition files describing the experimental condition.</p>
+</li>
+<li>
+<p>For each PI docker,</p>
+<div class="ulist">
+<ul>
+<li>
+<p>run the PI docker with current run files</p>
+</li>
+<li>
+<p>store each PI score, related to a unique run PI evaluation</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Once each run has been evaluated, the PI Manager compute the global PI score, given the computed PI per run.</p>
+</li>
+<li>
+<p>All results are uploaded to the database</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once this loop is achived, the PI scores of that experiment are uploaded into the database.
+That way, a future comparison of this experiment with another only consists in consulting the data stored into the database.</p>
+</div>
+<div class="paragraph">
+<p><strong>Message to take away</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All PI algorithms have to be encapsulated into a docker image</p>
+</li>
+<li>
+<p>All PI algorithm should be able to launch computation given the <em>Pre-Processed files</em> associated to a single run.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The preparation of the Docker image containing the processing algorithm will be more extensively detailed later on.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pi_repository_structure"><a class="anchor" href="#_pi_repository_structure"></a>2. PI repository structure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To reach that structure, a PI code repository must have the following structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">README.md
+src/
+test_data
+compile.sh
+DockerFile
+install.sh
+run_pi</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>README.md</code> (or any rich text format): should contain common indications about the repository content, purposes, maintainer, &#8230;&#8203;</p>
+</li>
+<li>
+<p><code>src</code> should gather all the code of the PI algorithm.
+If the code organization is left to the PI algorithm developer preferences, we strongly advice following good software practices.</p>
+</li>
+<li>
+<p><code>test_data</code>: folder containing reference input data and associated expected output result that can be used for making code testing.</p>
+</li>
+<li>
+<p><code>compile.sh</code>: shell script containing the command to build the program</p>
+</li>
+<li>
+<p><code>DockerFile</code>: file indicating how to create the Docker image for that code.</p>
+</li>
+<li>
+<p><code>install.sh</code>: shell program indicating how to install all dependencies on a fresh ubuntu machine.</p>
+</li>
+<li>
+<p><code>run_pi</code>: script that will be the docker container entry point, and that should launch the PI computation, given an input folder (with all input processing files) and an output folder (to store result files).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We are aiming at such generic repository structure to have a common management scheme for all PI code.</p>
+</div>
+<div class="paragraph">
+<p>Most of the mentioned files are related to the preparation of the docker image, which will be described in a second phase.
+We will now focus on the expected interface of the benchmarking algorithm.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pi_algorithm_interface"><a class="anchor" href="#_pi_algorithm_interface"></a>3. PI algorithm interface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Independentely of the programming language, we request the entry point (being an executable or a script) to have the interface illustrated on Figure named <a href="#fig:pim_loop">Overall PI Manager processing loop</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Input: all preprocessed data file of a single run</p>
+</li>
+<li>
+<p>Output: one file per Performance Indicator computed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is important noting that the PI algorithm should be able to run provided the data of a <strong>single run</strong>.
+Thus, if the experiment contains 5 runs, the algorithm will be called 5 times.</p>
+</div>
+<div class="sect2">
+<h3 id="_input_data"><a class="anchor" href="#_input_data"></a>3.1. Input data</h3>
+<div class="paragraph">
+<p>The input data of an experiment can be composed of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>datafile collected from sensors during the experimentation</p>
+</li>
+<li>
+<p>datafile corresponding to benchmarking condition, like robot specification, human specification, testbed configuration, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We assume the processing algorithm entry point expects all input files to be explicitely detailed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">run_pi subject_N_run_R_jointAngles.csv subject_N_anthropometric.yaml testbed.yaml [output_folder]</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The expected launch command is the information required in the PI Algo template entry named <a href="template.html#Input command" class="page">input command</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_output_data"><a class="anchor" href="#_output_data"></a>3.2. Output data</h3>
+<div class="paragraph">
+<p>To be again generic, we are proposing the following output format:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>One file per PI score.</p>
+</li>
+<li>
+<p>That file would have a <a href="https://fr.wikipedia.org/wiki/YAML">YAML</a> structure indicating the content type.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The YAML file should contains keys <code>type</code> and <code>value</code>.
+We consider the following options:</p>
+</div>
+<div class="paragraph">
+<p>For a <code>scalar</code> output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'scalar'
+value: 42</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For a <code>vector</code> output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'vector'
+value: [0.96867, 1.01667, 0.98843, 0.95168, 0.87936, 0.94576, 0.87802, 0.87571, 0.81802, 0.82336]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For a <code>matrix</code> output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'matrix'
+value: [[1.0, 0, 0], [0, 1.0, 0], [0, 0, 1.0]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For a vector including labels, a matrix is used, with the first row being the labels:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'labelled_matrix'
+value: [['step_length', 'step_time', 'stride_time'], [0.5, 0.8, 0.4]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For a string output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'string'
+value: 'hip'</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The type of the output file is defined in the <a href="template.html#output type field" class="page">PI spec</a>, set in the general template sheet.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Note that providing several PI output through a unique source code or algorithm is an option provided to the developer.
+But in any case, we should have as many files generated as PI computed.</p>
+</div>
+<div class="paragraph">
+<p>The name of each PI file has to be the same as the name of the PI, as specified in the PI table in the <a href="template.html#PI Sheet" class="page">name</a> entry.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+for non-scalar metrics, we suggest the definition of a metric to <em>compress</em> or aggregare the score (like using <code>mean</code> for providing a unique value from a vectir result for a given run).
+      See the <a href="template.html#intra-run aggregation" class="page">intra-run aggregation definition</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The scoring is <em>ideally</em> performed <strong>per run</strong>.
+         The score aggregation across the N runs (like how to extract an experiment <code>step_time</code> score given all the <code>step_time</code> vectors obtained in the successive runs) is specified in the template.
+         See the <a href="template.html#inter-run aggregation" class="page">inter-run aggregation definition</a>.
+         It will be automatically computed by the PI Manager
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
