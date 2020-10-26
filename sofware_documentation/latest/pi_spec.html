@@ -184,7 +184,7 @@ The objective of the <code>PI Manager</code> is to orchestrate the computation o
 We assume here that an experiment has just been uploaded to the Benchmarking Software, i.e. all experimental data are already uploaded and stored into the database.</p>
 </div>
 <div class="paragraph">
-<p>The remaining operation is the scoring of the experiment, which is for what is triggered the PI Mananger.
+<p>The remaining operation is the scoring of the experiment, which is for what is triggered the PI Manager.
 The successive operations conducted by the PI Manager are the followings:</p>
 </div>
 <div class="olist arabic">
@@ -239,7 +239,7 @@ As mentioned, each of the PI routines are encapsulated within a docker image.
 <p>We assume that each run (iteration of the experiment with similar conditions or independent variables), is described by a set of <em>Pre-processed files</em>.</p>
 </div>
 <div class="paragraph">
-<p>Then The PI Manager loops on each run and docker:</p>
+<p>Then The PI Manager loops on each run as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -275,7 +275,7 @@ As mentioned, each of the PI routines are encapsulated within a docker image.
 </ul>
 </div>
 <div class="paragraph">
-<p>Once this loop is achived, the PI scores of that experiment are uploaded into the database.
+<p>Once this loop is achieved, the PI scores of that experiment are uploaded into the database.
 That way, a future comparison of this experiment with another only consists in consulting the data stored into the database.</p>
 </div>
 <div class="paragraph">
@@ -284,7 +284,7 @@ That way, a future comparison of this experiment with another only consists in c
 <div class="ulist">
 <ul>
 <li>
-<p>All PI algorithms have to be encapsulated into a docker image</p>
+<p>All PI algorithms have to be encapsulated into a Docker image</p>
 </li>
 <li>
 <p>All PI algorithm should be able to launch computation given the <em>Pre-Processed files</em> associated to a single run.</p>
@@ -336,10 +336,10 @@ If the code organization is left to the PI algorithm developer preferences, we s
 <p><code>DockerFile</code>: file indicating how to create the Docker image for that code.</p>
 </li>
 <li>
-<p><code>install.sh</code>: shell program indicating how to install all dependencies on a fresh ubuntu machine.</p>
+<p><code>install.sh</code>: shell program indicating how to install all dependencies on a fresh Ubuntu machine.</p>
 </li>
 <li>
-<p><code>run_pi</code>: script that will be the docker container entry point, and that should launch the PI computation, given an input folder (with all input processing files) and an output folder (to store result files).</p>
+<p><code>run_pi</code>: script that will be the Docker container entry point, and that should launch the PI computation, given an input folder (with all input processing files) and an output folder (to store result files).</p>
 </li>
 </ul>
 </div>
@@ -347,7 +347,7 @@ If the code organization is left to the PI algorithm developer preferences, we s
 <p>We are aiming at such generic repository structure to have a common management scheme for all PI code.</p>
 </div>
 <div class="paragraph">
-<p>Most of the mentioned files are related to the preparation of the docker image, which will be described in a second phase.
+<p>Most of the mentioned files are related to the preparation of the Docker image, which will be described in a second phase.
 We will now focus on the expected interface of the benchmarking algorithm.</p>
 </div>
 </div>
@@ -356,7 +356,7 @@ We will now focus on the expected interface of the benchmarking algorithm.</p>
 <h2 id="_pi_algorithm_interface"><a class="anchor" href="#_pi_algorithm_interface"></a>3. PI algorithm interface</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Independentely of the programming language, we request the entry point (being an executable or a script) to have the interface illustrated on Figure named <a href="#fig:pim_loop">Overall PI Manager processing loop</a>:</p>
+<p>Independently of the programming language, we request the entry point (being an executable or a script) to have the interface illustrated on Figure named <a href="#fig:pim_loop">Overall PI Manager processing loop</a>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -388,7 +388,7 @@ Thus, if the experiment contains 5 runs, the algorithm will be called 5 times.</
 </ul>
 </div>
 <div class="paragraph">
-<p>We assume the processing algorithm entry point expects all input files to be explicitely detailed:</p>
+<p>We assume the processing algorithm entry point expects all input files to be explicitly detailed:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -498,7 +498,7 @@ But in any case, we should have as many files generated as PI computed.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-for non-scalar metrics, we suggest the definition of a metric to <em>compress</em> or aggregare the score (like using <code>mean</code> for providing a unique value from a vectir result for a given run).
+for non-scalar metrics, we suggest the definition of a metric to <em>compress</em> or aggregate the score (like using <code>mean</code> for providing a unique value from a vector result for a given run).
       See the <a href="template.html#intra-run aggregation" class="page">intra-run aggregation definition</a>.
 </td>
 </tr>

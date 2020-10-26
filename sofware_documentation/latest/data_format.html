@@ -134,7 +134,7 @@ Other motivations for the specification of a unique data format and conventions 
 <p>Ensuring automatic computation of Performance Indicators (PIs) based on recorded data.</p>
 </li>
 <li>
-<p>Maximising compatibility between PIs that are common to several protocols (e.g. step length can be calculated in many ways and under many different conditions).</p>
+<p>Maximizing compatibility between PIs that are common to several protocols (e.g. step length can be calculated in many ways and under many different conditions).</p>
 </li>
 <li>
 <p>Allowing data collection and PI computation to happen independently in different times and location (e.g. enabling any remote user to benchmark an experiment performed in a specific laboratory setting).</p>
@@ -233,7 +233,7 @@ This is the root name of the file.</p>
 </li>
 <li>
 <p>The <code>subject</code> / <code>cond</code> / <code>run</code> namespaces are only used when it makes sense.
-An experiment involving a unique subject would have have pre-preocessed files following the pattern: <code>cond_Y_run_Z_[type].csv</code>.
+An experiment involving a unique subject would have have pre-processed files following the pattern: <code>cond_Y_run_Z_[type].csv</code>.
 An experiment with various subject but unique condition would follow the pattern <code>subject_X_run_Z_[type].csv</code>.
 At the extreme, an experiment involving a unique subject (or an humanoid), with single condition and no repetition will be described by files with pattern: <code>[type].csv</code>.</p>
 </li>
@@ -241,7 +241,7 @@ At the extreme, an experiment involving a unique subject (or an humanoid), with 
 </div>
 <div class="paragraph">
 <p>Unless specified if different, all datafile recorded will have a name using this pattern.
-Each data file is now described, focusing on the type of information stored (extensions subject, cond and run are skiped for now).</p>
+Each data file is now described, focusing on the type of information stored (extensions subject, cond and run are skipped for now).</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Pre-processed files format (list to be updated)</caption>
@@ -675,7 +675,7 @@ Moreover, it allows to use a wide variety of simulators commonly used in robotic
 <p><strong>Name of the file</strong>: <code>wr_N_config_M_segments</code>, where <code>N</code> is the WR number and <code>M</code> is the configuration number (for resizable robots this could be useful).</p>
 </div>
 <div class="paragraph">
-<p><strong>File Format</strong>: .urdf. This format file allows to include Gazebo simulation tags, such as friction properties, or visualization properties that allow to simulate more realistic behaviours.
+<p><strong>File Format</strong>: .urdf. This format file allows to include Gazebo simulation tags, such as friction properties, or visualization properties that allow to simulate more realistic behaviors.
 This file shall contain the dimensions and inertial properties of each segment of the worn robot with respect to the reference system of the human body segment connected to it.
 This is needed to enable dynamic simulators to model the human-WR system.</p>
 </div>
@@ -742,7 +742,7 @@ Different words on the same key must be separated by underscore.
 keys must be written in lower case style.</p>
 </div>
 <div class="paragraph">
-<p>If a protocol involves several equipments, then all configuration information should be placed in the same file, using the pattern <code>device_name_param_name</code> to describe each of the device.
+<p>If a protocol involves several equipment, then all configuration information should be placed in the same file, using the pattern <code>device_name_param_name</code> to describe each of the device.
 For instance, if a protocol involves a push stick and an instrumented garment, we would consider the following configuration file:</p>
 </div>
 <div class="listingblock">
@@ -794,7 +794,7 @@ Data can be provided as the device drivers provide them  (e.g. <code>c3d</code>,
 <p>This set of files should contain all the data processed from the raw data and needed for running a specific benchmarking routine.
 As described in each of the following sub-sections, we envision one format per type of information.
 These files should be preferably agnostic of the specific sensor used to capture it, so that the benchmarking routines can be launched independently of the acquisition devices.
-All time-series files should contain timestamped information, since timestamp reference will be shared by all files describing a same experiment run.</p>
+All time-series files should contain time-stamped information, since timestamp reference will be shared by all files describing a same experiment run.</p>
 </div>
 <div class="paragraph">
 <p>An experiment can provide one or more of the following file types.
@@ -1869,7 +1869,7 @@ These are the files that they have produced to be compatible with the EUROBENCH 
 <div class="paragraph">
 <p>The Laboratory ExoLab has done a study on healthy people wearing an H2 exoskeleton and recorded one subject during slope ascending, with optical markers.
 Three runs were recorded.
-The experiment was then repeated changeing the support level of the exoskeleton</p>
+The experiment was then repeated changing the support level of the exoskeleton</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1982,7 +1982,7 @@ The level of exoskeleton support is specified through a variable in <code>cond_0
 <div class="sect2">
 <h3 id="_example_4"><a class="anchor" href="#_example_4"></a>7.4. Example 4</h3>
 <div class="paragraph">
-<p>A laboratory studied human behaviour during sit-to-stand activity.
+<p>A laboratory studied human behavior during sit-to-stand activity.
 Two subjects were involved.
 Each subject were asked to perform 5 sit-to-stand, and data collection was stopped once the person was standing up.
 Then the operation was repeated with eyes closed, to see the importance of the visual clue.
@@ -2033,7 +2033,7 @@ An instrumented chair was used, which is collecting a set of measures, in a form
 </ul>
 </div>
 <div class="paragraph">
-<p>The eyes status (open/closed) is set trhough a parameter in files <code>cond_01_testbed.yaml</code> and <code>cond_02_testbed.yaml</code>.</p>
+<p>The eyes status (open/closed) is set through a parameter in files <code>cond_01_testbed.yaml</code> and <code>cond_02_testbed.yaml</code>.</p>
 </div>
 </div>
 </div>
