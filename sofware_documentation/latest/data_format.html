@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eurobench Data Format :: Eurobench framework documentation</title>
+    <link rel="canonical" href="https://antora.gitlab.io/demo/docs-site/sofware_documentation/latest/data_format.html">
+    <meta name="keywords" content="AsciiDoc">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://antora.gitlab.io/demo/docs-site">Eurobench framework documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <!--<div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div> -->
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="sofware_documentation" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Software documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Welcome</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="data_format.html">Input data format</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="model.html">Human model</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pi_spec.html">Performance indicator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="template.html">Protocol template</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Software documentation</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Software documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Software documentation</a></li>
+    <li><a href="data_format.html">Input data format</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/aremazeilles/eurobench_documentation/edit/master/modules/ROOT/pages/data_format.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Eurobench Data Format</h1>
+<div class="sect1">
+<h2 id="_motivation"><a class="anchor" href="#_motivation"></a>1. Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The experimental datasets expected to populate the EUROBENCH database will engage data coming from a lot of different sensing devices, from different laboratories and will be designed for different benchmarking scenarios and algorithms.
+In order to store these experiments in a consistent way, a common, comprehensive and flexible data format is necessary.
+Other motivations for the specification of a unique data format and conventions are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensuring automatic computation of Performance Indicators (PIs) based on recorded data.</p>
+</li>
+<li>
+<p>Maximizing compatibility between PIs that are common to several protocols (e.g. step length can be calculated in many ways and under many different conditions).</p>
+</li>
+<li>
+<p>Allowing data collection and PI computation to happen independently in different times and location (e.g. enabling any remote user to benchmark an experiment performed in a specific laboratory setting).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Any request to extend / change format described here should be done following the <a href="#README.adoc#Modification Instructions" class="page unresolved">contribution policy</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_files_and_format"><a class="anchor" href="#_data_files_and_format"></a>2. Data files and format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section we propose a common format for the set of files collected during an experiment.
+An experiment should correspond to a set of files per run <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.
+This set of files  will be taken as input by a benchmarking routine that, after processing these data, will return a set of benchmarking score(s) (see Figure 1).</p>
+</div>
+<div id="fig:df_processing_chain" class="imageblock text-center">
+<div class="content">
+<img src="_images/df_processing_chain.png" alt="df processing chain">
+</div>
+<div class="title">Figure 1. Main elements of the data processing chain</div>
+</div>
+<div class="sect2">
+<h3 id="_terminology"><a class="anchor" href="#_terminology"></a>2.1. Terminology</h3>
+<div class="paragraph">
+<p>Generally speaking, we consider 4 different classes of files related to an experiment:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Bipedal system specification</strong>: file providing specification of the dimension of any bipedal system.
+It can be describing a human subject, a humanoid, a prosthesis, an exoskeleton.</p>
+</li>
+<li>
+<p><strong>Testbed configuration</strong> file: provide values for any configuration parameter needed to reproduce the conditions of an experimentation, or a subset of an experimentation.</p>
+</li>
+<li>
+<p><strong>Raw Data</strong>: Data directly collected by the sensors (e.g. marker trajectory).</p>
+</li>
+<li>
+<p><strong>Pre-processed Data</strong>: Sensor-actuator agnostic data acquired during the experimentation.
+The structure of such file is to be compliant with the format agreed in this document.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the following sections, each of these types of data will be defined and detailed.</p>
+</div>
+<div class="paragraph">
+<p>An experiment consists in recording datafiles while the subject (human / robot / both) is performing a given task.
+The activity can be repeated as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>to get different <strong>runs</strong>: a set of runs consists in repeating the same actions (and recording) in the same conditions (for enabling statistics for instance).
+We would thus acquire several times the same set of information, but the data will be split in different datafiles.</p>
+</li>
+<li>
+<p>to consider different <strong>conditions</strong>: in that case, a setting is changed.
+It can be a configuration of the testbed or environmental settings (augment the slope angle), a configuration of the robotic system (support level of the exoskeleton), or an indication to the user (redo the operation with eyes closed).
+The parameter being changed must be mentioned as a <a href="template.html#table_controlled_variables" class="page">controlled variable</a>, and must be listed in the <a href="#_testbed_configuration_file">testbed configuration file</a>.
+For each condition, we can have a set of runs.</p>
+</li>
+<li>
+<p>to involved several <strong>subjects</strong>: this is particularly relevant for experiments involving humans.
+In that case, we can considering having for each subject the execution of the same protocol, i.e involving potentially several conditions, and for each condition several repetitions or runs.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_filename_format_and_generalities"><a class="anchor" href="#_filename_format_and_generalities"></a>2.2. Filename format, and generalities</h3>
+<div class="paragraph">
+<p>Generally speaking pre-processed data should follow the following pattern:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>subject_X_cond_Y_run_Z_[type].csv</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>[type]</code> is a string related to the type of information stored in the file.
+This is the root name of the file.</p>
+</li>
+<li>
+<p>X, Y, Z are integer respectively associated the to the number of subjects involved, the number of different conditions being tested, and the number of repetitions per condition.</p>
+</li>
+<li>
+<p>The <code>subject</code> / <code>cond</code> / <code>run</code> namespaces are only used when it makes sense.
+An experiment involving a unique subject would have have pre-processed files following the pattern: <code>cond_Y_run_Z_[type].csv</code>.
+An experiment with various subject but unique condition would follow the pattern <code>subject_X_run_Z_[type].csv</code>.
+At the extreme, an experiment involving a unique subject (or an humanoid), with single condition and no repetition will be described by files with pattern: <code>[type].csv</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Unless specified if different, all datafile recorded will have a name using this pattern.
+Each data file is now described, focusing on the type of information stored (extensions subject, cond and run are skipped for now).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Pre-processed files format (list to be updated)</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">File name</th>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jointAngles</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Joint Angles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jointTorques</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Joint Torques</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jointTrajectories</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Joint Trajectories</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ground reaction Forces</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">emg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Electromyography</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wr_N_config_M_segments (unclear)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yaml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Segments descriptions files</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subject_N_anthropometry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yaml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Anthropometry description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">humanoid_N_anthropometry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yaml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Humanoid description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gaitEvents</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yaml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gait Events</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subject_N_run_R_testbedLabel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yaml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">testbed specifics</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Generally speaking, all <code>csv</code> files follow the <a href="https://en.wikipedia.org/wiki/Comma-separated_values">Comma-separated values</a> format, using <strong>semicolon</strong> as separator.</p>
+</div>
+<div class="paragraph">
+<p>In the following documentation, we will use tables for describing file content.
+As an example, the following table:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">label_1</th>
+<th class="tableblock halign-left valign-top">label_2</th>
+<th class="tableblock halign-left valign-top">label_3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value_1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value_2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value_3</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>would correspond to a file containing the 2 lines:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>label_1; label_2; label_3
+value_1; value_2; value_3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For all <code>csv</code>-based data file type, we will present in the following document a table with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the first line indicating the column labels to use</p>
+</li>
+<li>
+<p>the second line indicating the unit of each column</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If we can accept that all column may not be present in the file (see next section), we assume that the first row should <strong>always contain the labels of all columns present in the file</strong>.</p>
+</div>
+<div class="sect3">
+<h4 id="_incomplete_data_file"><a class="anchor" href="#_incomplete_data_file"></a>2.2.1. incomplete data file</h4>
+<div class="paragraph">
+<p>If a field or a column cannot be filled (the force sensor only provides force measurement, no torque, or all human joint angles are not tracked), the label should be <strong>discarded</strong> from the file (i.e no empty column). This way, the wrench file corresponding to a 6D force sensor (<a href="https://onrobot.com/sites/default/files/documents/Datasheet_HEX%20QC_20191122.pdf">OnRobot HEX-E QC</a>, for example) would look as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>time; force_x; force_y; force_z; torque_x; torque_y; torque_z
+0; 1.67; 2.34; 0.83; 0.21; 0.53; 0.07
+0.001; 1.62; 2.12; 0.75; 0.29; 0.47; 0.1
+0.002; 1.63; 2.41; 0.81; 0.19; 0.56; 0.8
+.....</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>while the wrench file for a 1D force sensor (<a href="https://www.tekscan.com/products-solutions/force-sensors/a101">FlexiForce A101 Sensor</a>, for example) would have the following appearance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>time; force_x
+0; 1.67
+0.001; 1.62
+0.002; 1.63
+.....</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Note that, depending on the benchmarking algorithm requirements, this may prevent the Performance Indicator computation, if a column is expected by the algorithm, but not present in the data file.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_global_reference_frame"><a class="anchor" href="#_global_reference_frame"></a>2.3. Global reference frame</h3>
+<div class="paragraph">
+<p>Even though data collected should always be aligned with the specification of the protocol that could supersede the general description provided here, in any measurement involving a global Cartesian reference frame, such reference frame should be placed as proposed in the ISB recommendations, with <a href="#Wu1995">[Wu1995]</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>x</code> axis aligned with the gait direction</p>
+</li>
+<li>
+<p><code>y</code> axis vertical and pointing upwards</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a id="Wu1995"></a> [Wu1995]: G. Wu and P. R. Cavanagh. ISB recommendations for standardization in the reporting of kinematic data. Journal of Biomechanics, 28(10), 1995. <a href="https://www.ece.uvic.ca/~bctill/papers/mocap/Wu_Cavanagh_1995.pdf">pdf</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_protocol_with_multiple_but_similar_sensors"><a class="anchor" href="#_protocol_with_multiple_but_similar_sensors"></a>2.3.1. Protocol with multiple but similar sensors</h4>
+<div class="paragraph">
+<p>Some protocols can require the use of various but similar sensors (like a force sensor on each of the crutches).
+In that case two options are proposed:</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The protocol should indicate the appropriate option to use.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Option 1: one file per device</strong></p>
+</div>
+<div class="paragraph">
+<p>The two files will share the same structure (based on the information stored in it), but will only differ by their name:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>subject_N_run_R_wrench_tag1.csv</code> for the force sensor labelled <code>tag1</code></p>
+</li>
+<li>
+<p><code>subject_N_run_R_wrench_tag2.csv</code> for the force sensor labelled <code>tag2</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The label string (<code>tag1</code>, <code>tag2</code>) to use is defined by the protocol.</p>
+</div>
+<div class="paragraph">
+<p>Both files will contain data following the regular wrench file pattern, i.e.:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2858%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">force_x</th>
+<th class="tableblock halign-left valign-top">force_y</th>
+<th class="tableblock halign-left valign-top">force_z</th>
+<th class="tableblock halign-left valign-top">torque_x</th>
+<th class="tableblock halign-left valign-top">torque_y</th>
+<th class="tableblock halign-left valign-top">torque_z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.67</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.83</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.53</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.07</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.62</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.47</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.002</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.63</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.41</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.81</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.56</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.8</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Option 2: one file gathering the two devices</strong></p>
+</div>
+<div class="paragraph">
+<p>A single file is provided, and use the generic format <code>subject_N_run_R_wrench.csv</code>.
+The file content is a concatenation of the two readings, with the labels adjusted to distinguish the two devices:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6924%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">tag1_force_x</th>
+<th class="tableblock halign-left valign-top">tag1_force_y</th>
+<th class="tableblock halign-left valign-top">tag1_force_z</th>
+<th class="tableblock halign-left valign-top">tag1_torque_x</th>
+<th class="tableblock halign-left valign-top">tag1_torque_y</th>
+<th class="tableblock halign-left valign-top">tag1_torque_z</th>
+<th class="tableblock halign-left valign-top">tag2_force_x</th>
+<th class="tableblock halign-left valign-top">tag2_force_y</th>
+<th class="tableblock halign-left valign-top">tag2_force_z</th>
+<th class="tableblock halign-left valign-top">tag2_torque_x</th>
+<th class="tableblock halign-left valign-top">tag2_torque_y</th>
+<th class="tableblock halign-left valign-top">tag2_torque_z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.67</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.83</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.53</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.07</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.67</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.83</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.53</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.07</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.001</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.62</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.47</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.62</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.75</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.47</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.002</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.63</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.41</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.81</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.56</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.63</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.41</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.81</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.56</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This option is only accepted if the data logged is using the same timestamp.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bipedal_system_specification_files"><a class="anchor" href="#_bipedal_system_specification_files"></a>3. Bipedal system specification files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Any bipedal system involved in an experiment is to be described by a specification file.
+We are promoting the use of the <em>Unified Robot Description Format</em>, URDF, both for robotic systems and human subjects.</p>
+</div>
+<div class="paragraph">
+<p>Note that if an experiment involves a human subject and a wearable device, we expect to get two specification files, one for the human, and another for the wearable.</p>
+</div>
+<div class="sect2">
+<h3 id="_unified_robot_description_format_urdf_file"><a class="anchor" href="#_unified_robot_description_format_urdf_file"></a>3.1. Unified Robot Description Format (URDF) file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: It is the standard file (written in XML) used in ROS to describe a robot’s model (kinematics, dynamics and sensors).
+This file must be provided if the experiments enroll a humanoid robot.
+From this file, the number of joints, its labels and the degrees of freedom can be extracted in order to construct the pre-processed joint angles file, and for the definition of the anthropometric file in humanoids.</p>
+</div>
+<div class="paragraph">
+<p><strong>Number of files</strong>: all necessary files to describe the complete robotic structure.</p>
+</div>
+<div class="paragraph">
+<p><strong>Name of the file</strong>: The main urdf file which includes the rest of urdf files should be named as <code>humanoid_N_anthropometry</code>, where <code>N</code> is the humanoid number.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.urdf</code>.
+The use of <code>.urdf</code> files also has shortcomings such as the lack of friction (important for e.g. walking steeper slope angles).
+In order to resolve these issues, EUROBENCH will use Gazebo as a simulator.
+This allows to enhance the <code>.urdf</code> with <code>&lt;gazebo/&gt;</code> tags, permitting the injection of features from the gazebo file format (<code>.sdf</code>) while retaining the most common file format, <code>.urdf</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_wr_segments_description_urdf_file"><a class="anchor" href="#_wr_segments_description_urdf_file"></a>3.2. WR segments description (URDF) file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: Standard file used in robotics in XML format to describe the dimensions, the physics properties (COM, mass, friction) and inertial properties of each one of the segments of the worn robot.
+All these segments are linked by joints (fixed, prismatic, rotational) forming a single tree.
+Moreover, it allows to use a wide variety of simulators commonly used in robotics such as Gazebo.</p>
+</div>
+<div class="paragraph">
+<p><strong>Number of files</strong>: Usually each segment, sensor, or set of segments such as a leg are described in a single file. Finally the whole robot includes all these files in a single file which is the one loaded.</p>
+</div>
+<div class="paragraph">
+<p><strong>Name of the file</strong>: <code>wr_N_config_M_segments</code>, where <code>N</code> is the WR number and <code>M</code> is the configuration number (for resizable robots this could be useful).</p>
+</div>
+<div class="paragraph">
+<p><strong>File Format</strong>: .urdf. This format file allows to include Gazebo simulation tags, such as friction properties, or visualization properties that allow to simulate more realistic behaviors.
+This file shall contain the dimensions and inertial properties of each segment of the worn robot with respect to the reference system of the human body segment connected to it.
+This is needed to enable dynamic simulators to model the human-WR system.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_human_anthropometric_measures_file"><a class="anchor" href="#_human_anthropometric_measures_file"></a>3.3. Human anthropometric measures file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain all the anthropometric measurements of the human body segment, as detailed in the <a href="model.html#sec_hbs" class="page">model document</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Name of the file</strong>: subject_N_anthropometry, where N = subject’s number.
+Use appropriate leading zeros for R and N to ensure proper ordering of files.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: .yaml</p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>: Set of lines containing key: value where the key is provided in the <a href="model.html#table_body_segment" class="page">body segment table</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Units</strong>: Meters</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_humanoid_anthropometric_measures_file"><a class="anchor" href="#_humanoid_anthropometric_measures_file"></a>3.4. Humanoid anthropometric measures file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain all the anthropometric measurements from the humanoid robot mapped to the above proposed human segments (see Table 2 and Figure 3).</p>
+</div>
+<div class="paragraph">
+<p><strong>Name of the file</strong>: humanoid_N_anthropometry, where N = humanoid’s identifier.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: .yaml</p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>: Set of lines containing key: value where the key must contain the corresponding robot segment name.</p>
+</div>
+<div class="paragraph">
+<p><strong>Units</strong>: Meters.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testbed_configuration_file"><a class="anchor" href="#_testbed_configuration_file"></a>4. Testbed configuration file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain all relevant information for reproducing the experiment in similar conditions.
+It can contain values of configuration of the used testbed (e.g. for slope: slope angle; for stairs: step height; etc…).
+It can also contain configuration parameters that may be needed by the algorithms for computing the performance indicators.
+It can also contain subject behavior constraints set by the experimenter (ask the human to perform the action eyes closed, or use  different tuning parameter set for the humanoid, or a different support level for the exoskeleton&#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: .yaml</p>
+</div>
+<div class="paragraph">
+<p><strong>File name</strong>: <code>testbed.yaml</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>: Set of lines containing key: values.
+Where each key is one testbed-related data.
+keys must be self-explicative.
+Different words on the same key must be separated by underscore.
+keys must be written in lower case style.</p>
+</div>
+<div class="paragraph">
+<p>If a protocol involves several equipment, then all configuration information should be placed in the same file, using the pattern <code>device_name_param_name</code> to describe each of the device.
+For instance, if a protocol involves a push stick and an instrumented garment, we would consider the following configuration file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">push_tick_param_1: 3.14
+push_tick_param_2: 0
+garment_param_i : [15, 46]
+garment_param_j: 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The exact content of the file is defined by the protocol itself.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>All controlled variables, as defined in the <a href="template.html#table_controlled_variables" class="page">template spec</a> should be defined in that file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_raw_data_files"><a class="anchor" href="#_raw_data_files"></a>5. Raw Data Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Description</strong>: This set of files should contain all data collected directly from the sensory system/s present in the benchmarking scenario (i.e. 3D marker positions, IMUs signals, forces from platforms, etc&#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p><strong>Number of files</strong>: One file per run and sensory system should be provided.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: These files are not supposed to be processed automatically by the EUROBENCH Benchmarking routines, so that a specific format is not defined.
+Data can be provided as the device drivers provide them  (e.g. <code>c3d</code>, <code>rosbag</code>, <code>.txt</code>, <code>.csv</code>, &#8230;&#8203;). However, a description of the file content and acquisition frequency should be provided (like <code>Readme.md</code> or <code>Readme.txt</code>) to help the user opening and understanding these files.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pre_processed_data_files"><a class="anchor" href="#_pre_processed_data_files"></a>6. Pre-Processed Data Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This set of files should contain all the data processed from the raw data and needed for running a specific benchmarking routine.
+As described in each of the following sub-sections, we envision one format per type of information.
+These files should be preferably agnostic of the specific sensor used to capture it, so that the benchmarking routines can be launched independently of the acquisition devices.
+All time-series files should contain time-stamped information, since timestamp reference will be shared by all files describing a same experiment run.</p>
+</div>
+<div class="paragraph">
+<p>An experiment can provide one or more of the following file types.
+If a testbed or a benchmarking routine requires a data type not included in this document, please contact the EUROBENCH Team.
+We will work together with you to create the required data file type.</p>
+</div>
+<div class="sect2">
+<h3 id="_joint_angles_file"><a class="anchor" href="#_joint_angles_file"></a>6.1. Joint angles file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain the time-series of all measured joint angles, expressed in YXZ Cardan Angles, as defined in the <a href="model.html#sec_angles" class="page">Angle Definition</a> section.</p>
+</div>
+<div class="paragraph">
+<p><strong>filename root</strong>: <code>jointAngles</code>  where N = subject’s number and R = run number.
+Use appropriate leading zeros for R and N to ensure proper ordering of files.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Joint angle file structure and unit</caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">r_hip_y</th>
+<th class="tableblock halign-left valign-top">r_hip_x</th>
+<th class="tableblock halign-left valign-top">r_hip_z</th>
+<th class="tableblock halign-left valign-top">r_knee_y</th>
+<th class="tableblock halign-left valign-top">r_knee_x</th>
+<th class="tableblock halign-left valign-top">r_knee_z</th>
+<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Joint labels should refer to the names provided within the <a href="model.html#fig_joint_center_label" class="page">human model document</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_joint_torques_file"><a class="anchor" href="#_joint_torques_file"></a>6.2. Joint torques file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain all the measured joint torques.</p>
+</div>
+<div class="paragraph">
+<p><strong>filename root</strong>: <code>jointTorques</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Joint torque file structure and unit</caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">r_hip_x</th>
+<th class="tableblock halign-left valign-top">r_hip_y</th>
+<th class="tableblock halign-left valign-top">r_hip_z</th>
+<th class="tableblock halign-left valign-top">r_knee_x</th>
+<th class="tableblock halign-left valign-top">r_knee_y</th>
+<th class="tableblock halign-left valign-top">r_knee_z</th>
+<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Joint labels should refer to the names provided within the <a href="model.html#fig_joint_center_label" class="page">human model document</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_joint_center_3d_trajectories_file"><a class="anchor" href="#_joint_center_3d_trajectories_file"></a>6.3. Joint center 3D trajectories file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain all the measured trajectories of the joints.</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>jointTrajectories</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. 3D joint center file structure and unit</caption>
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">r_ankle_x</th>
+<th class="tableblock halign-left valign-top">r_ankle_y</th>
+<th class="tableblock halign-left valign-top">r_ankle_z</th>
+<th class="tableblock halign-left valign-top">r_knee_x</th>
+<th class="tableblock halign-left valign-top">r_knee_y</th>
+<th class="tableblock halign-left valign-top">r_knee_z</th>
+<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Joint labels should refer to the names provided within the <a href="model.html#fig_joint_center_label" class="page">human model document</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_body_center_of_mass_3d_trajectory"><a class="anchor" href="#_body_center_of_mass_3d_trajectory"></a>6.4. Body Center of Mass 3D trajectory</h3>
+<div class="paragraph">
+<p>The body Center of Mass (COM) is frequently considered in biomechanics, as it reflects the motion of the whole body.
+It is usually defined as <em>the unique point where the weighted relative position of the distributed mass sums to zero</em> (<a href="https://en.wikipedia.org/wiki/Center_of_mass">wikipedia</a>).</p>
+</div>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain the estimated COM position along time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>com</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. COM position file structure and unit (velocity and acceleration are only added if measured)</caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top"><code>x</code></th>
+<th class="tableblock halign-left valign-top"><code>y</code></th>
+<th class="tableblock halign-left valign-top"><code>z</code></th>
+<th class="tableblock halign-left valign-top"><code>vel_x</code></th>
+<th class="tableblock halign-left valign-top"><code>vel_y</code></th>
+<th class="tableblock halign-left valign-top"><code>vel_z</code></th>
+<th class="tableblock halign-left valign-top"><code>acc_x</code></th>
+<th class="tableblock halign-left valign-top"><code>acc_y</code></th>
+<th class="tableblock halign-left valign-top"><code>acc_z</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ms<sup>-1</sup></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ms<sup>-1</sup></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ms<sup>-1</sup></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ms<sup>-2</sup></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ms<sup>-2</sup></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ms<sup>-2</sup></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_angular_momentum_around_the_center_of_mass"><a class="anchor" href="#_angular_momentum_around_the_center_of_mass"></a>6.5. Angular Momentum around the Center of Mass</h3>
+<div class="paragraph">
+<p>The angular momentum of a body is a vector quantity that represents the magnitude and the direction in which the body rotates about a reference point <a href="#Bennett2010">[Bennett2010]</a>.
+We refer here to the total body angular momentum, around the total body Center of Mass (<code>CoM</code>), expressed in global coordinates.
+That is, the sum of the angular momenta of different segments around the total body <code>CoM</code> (see eq. (16) in <a href="#Herr2008">[Herr2008]</a> or the methods section in <a href="#Bennett2010">[Bennett2010]</a>).</p>
+</div>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain the estimated angular momentum around the COM along time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>angularMomentum</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Angular Momentum file structure and unit</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">x</th>
+<th class="tableblock halign-left valign-top">y</th>
+<th class="tableblock halign-left valign-top">z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Js</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Js</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Js</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>where <code>Js</code> stands for Joule second (equivalent to <code>kgm<sup>2</sup>s<sup>⁻1</sup></code>).</p>
+</div>
+<div class="paragraph">
+<p><strong>bibliography</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a id="Bennett2010"></a>]: B.C Bennett, S.D. Russell, P. Sheth, M. F. Abel. Angular momentum of walking at different speeds. Human Movement Science, Colume 29, Issue 1, 2010 (<a href="https://kin.sfsu.edu/sites/default/files/Angular%20momentum%20of%20walking%20at%20different%20speeds.pdf">link</a>)</p>
+</li>
+<li>
+<p>[<a id="Herr2008"></a>] H. Herr, M. Popovic. Angular momentum in human walking. Journal of Experimental Biology, Volume 211, Issue 4, (2008) - (<a href="https://jeb.biologists.org/content/jexbio/211/4/467.full.pdf)">link</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_inertia_tensor"><a class="anchor" href="#_inertia_tensor"></a>6.6. Inertia Tensor</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: The inertia tensor describes the body´s resistance to rotational motion in response to a torque.</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>inertiaTensor</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Inertia tensor file structure and unit</caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">xx</th>
+<th class="tableblock halign-left valign-top">xy</th>
+<th class="tableblock halign-left valign-top">xz</th>
+<th class="tableblock halign-left valign-top">yx</th>
+<th class="tableblock halign-left valign-top">yy</th>
+<th class="tableblock halign-left valign-top">yz</th>
+<th class="tableblock halign-left valign-top">zx</th>
+<th class="tableblock halign-left valign-top">zy</th>
+<th class="tableblock halign-left valign-top">zz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kgm²</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kgm²</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kgm²</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kgm²</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kgm²</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kgm²</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kgm²</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kgm²</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kgm²</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_wrench_file"><a class="anchor" href="#_wrench_file"></a>6.7. Wrench file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain wrench (force and torque) measured by a force sensor.</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>wrench</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Wrench file structure and unit</caption>
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2858%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">force_x</th>
+<th class="tableblock halign-left valign-top">force_y</th>
+<th class="tableblock halign-left valign-top">force_z</th>
+<th class="tableblock halign-left valign-top">torque_x</th>
+<th class="tableblock halign-left valign-top">torque_y</th>
+<th class="tableblock halign-left valign-top">torque_z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_ground_reaction_forces_file"><a class="anchor" href="#_ground_reaction_forces_file"></a>6.8. Ground Reaction Forces file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain forces measured by force platforms.</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>grf</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Ground Reaction Forces file structure and unit</caption>
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">f_x</th>
+<th class="tableblock halign-left valign-top">f_y</th>
+<th class="tableblock halign-left valign-top">f_z</th>
+<th class="tableblock halign-left valign-top">p_x</th>
+<th class="tableblock halign-left valign-top">p_y</th>
+<th class="tableblock halign-left valign-top">p_z</th>
+<th class="tableblock halign-left valign-top">t_x</th>
+<th class="tableblock halign-left valign-top">t_y</th>
+<th class="tableblock halign-left valign-top">t_z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N.m</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>where <code>f</code> stands for force, <code>p</code> for the center of pressure, and <code>t</code> for torques.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_electromyography_file"><a class="anchor" href="#_electromyography_file"></a>6.9. Electromyography file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall contain all the recorded EMG signals from the human subject.</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>emg</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. EMG file structure and unit</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">label_1</th>
+<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">label_i</th>
+<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>s</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mV</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mV</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>where <code>label_i</code> is to be a tag described in <a href="#tab:emg_tags">List of EMG muscles and labels considered. Suffixes <code>_l</code> and <code>_r</code> may be added to differentiate left and right limb, when needed.</a>.</p>
+</div>
+<table id="tab:emg_tags" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. List of EMG muscles and labels considered. Suffixes <code>_l</code> and <code>_r</code> may be added to differentiate left and right limb, when needed.</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Muscle</th>
+<th class="tableblock halign-left valign-top">Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abductor Longus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AbLo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Biceps Femoris</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BiFe</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gastrocnemious Lateralis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GaLa</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gastrocnemious Medialis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GaMe</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gluteus Maximus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GlMa</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gluteus Medialis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GlMe</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gracilis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gra</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Peroneus Longus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PeLo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rectus Femoris</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReFe</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sartorius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sar</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semimembranosus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SeMe</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Semitendinosus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SeTe</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Serratus Anterior</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SeAn</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Soleus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sol</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tensor Fascia Latae</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TeFa</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tibialis Anterior</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TiAn</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Extensor Digitorum</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ExDi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vastus Lateralis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VaLa</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vastus Medialis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VaMe</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_gait_events_file"><a class="anchor" href="#_gait_events_file"></a>6.10. Gait events file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall include all detected (or calculated) heel strike and toe off gait events.</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>gaitEvents</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.yaml</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:Set of lines containing key: vector of values. Where the key is provided on the last column of <a href="#tab:gait_tags">List of gait events and its considered labelling</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>File content</strong>: See Table 3</p>
+</div>
+<table id="tab:gait_tags" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 12. List of gait events and its considered labelling</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Gait Event</th>
+<th class="tableblock halign-left valign-top">Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Heel Strike</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">r_heel_strike</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left Heel Strike</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">l_heel_strike</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Toe Off</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">r_toe_off</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left Toe Off</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">l_toe_off</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Units</strong>: Seconds</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_physiological_data"><a class="anchor" href="#_physiological_data"></a>6.11. Physiological data</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: We gather in that concept measurements of the heart/breathing system activity and skin response:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Heart rate</em>: speed of the heartbeat measured by the number of contractions (beats) of the heart per minute (bpm) (<a href="https://en.wikipedia.org/wiki/Heart_rate">link</a>).
+Label: <code>hr</code></p>
+</li>
+<li>
+<p><em>Heart rate variability</em> (HRV): is the physiological phenomenon of variation in the time interval between heartbeats.
+It is measured by the variation in the beat-to-beat interval (<a href="https://en.wikipedia.org/wiki/Heart_rate_variability">link</a>).
+Unit is set to <code>sec</code> (second).
+Label: <code>hrv</code></p>
+</li>
+<li>
+<p><em>Respiration rate</em>: rate at which breathing occurs (<a href="https://en.wikipedia.org/wiki/Respiratory_rate">link</a>).
+Unit is <code>bpm</code> (breaths per minute).
+Label : <code>rr</code></p>
+</li>
+<li>
+<p><em>Galvanic skin response</em>: refers to changes in sweat gland activity that are reflective of the intensity of our emotional state
+(<a href="https://en.wikipedia.org/wiki/Electrodermal_activity">link</a>).
+Unit is <code>mS</code> (milliSiemens).
+Label: <code>gsr</code></p>
+</li>
+<li>
+<p><em>Electrocardiogram</em> (ECG): electrical activity of the heart as perceived by electrodes placed on the skin (<a href="https://en.wikipedia.org/wiki/Electrocardiography">link</a>).
+Unit is <code>mV</code> (milliVolt).
+Label: <code>ecg</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>physiological</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 13. Physiological file structure</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top">hr</th>
+<th class="tableblock halign-left valign-top">hrv</th>
+<th class="tableblock halign-left valign-top">rr</th>
+<th class="tableblock halign-left valign-top">gsr</th>
+<th class="tableblock halign-left valign-top">ecg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bpm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bpm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mV</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Note that recording all these dimensions may not be required by all protocols.
+Unmeasured dimensions should be discarded by removing the related label from the file.</p>
+</div>
+<div class="paragraph">
+<p>Also, if different acquisition devices are used, and if the acquisition frequency is different, then more specific data file could be generated (like <code>physiological_ecg</code> if ecg presents a different frequency).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testbed_platform_specific_data_recorded"><a class="anchor" href="#_testbed_platform_specific_data_recorded"></a>6.12. Testbed / Platform specific data recorded</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: In some protocol, an instrumented device may have been designed to collect a set of sensor data.
+We consider the possibility of gathering sensed data in a common file under the following conditions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>all data recorded should share the same timestamp.</p>
+</li>
+<li>
+<p>the file contains labelled column</p>
+</li>
+<li>
+<p>as mush as possible, the column labels should be following the data format proposed in the data types previously described in this document.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>platformData</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>: specific to the testbed. Label row mandatory.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_human_factor_metrics"><a class="anchor" href="#_human_factor_metrics"></a>6.13. Human Factor metrics</h3>
+<div class="paragraph">
+<p>We propose a common format for the set of files containing data regarding the user subjective evaluations of the experience of using an exoskeleton.
+We describe here all questionnaire-like output of an experimentation.
+These questionnaires can be filled by an operator observing the experimentation, or by the human subject taking part of the experimentation. This is defined by the related protocol.
+Here we focus on the representation of the questionnaires and related answers.</p>
+</div>
+<div class="paragraph">
+<p>The representation of any questionnaire is divided into two components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The description of the questionnaire itself: <a href="#_factor_meta_data_file">Factor Meta Data File</a></p>
+</li>
+<li>
+<p>The representation of the questionnaire answer: <a href="#_factor_data_file">Factor Data File</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We propose using <code>csv</code> format for both.</p>
+</div>
+<div class="sect3">
+<h4 id="_factor_meta_data_file"><a class="anchor" href="#_factor_meta_data_file"></a>6.13.1. Factor Meta Data File</h4>
+<div class="paragraph">
+<p><strong>Description</strong>: This file contains the specification of each question of the questionnaire.
+That file should be part of the protocol itself.
+It should not vary from an experimentation to another.</p>
+</div>
+<div class="paragraph">
+<p><strong>Name of the file</strong>: <code>questionnaire_name.csv</code>, where <code>name</code> should be a unique identifier given to that questionnaire model.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>: a table-like structure with the following content:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 14. Meta Data File structure sample</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">itemID</th>
+<th class="tableblock halign-left valign-top">type</th>
+<th class="tableblock halign-left valign-top">options</th>
+<th class="tableblock halign-left valign-top">text</th>
+<th class="tableblock halign-left valign-top">answer_unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the title of the questionnaire?</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float &gt; 0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time required to donning the exoskeleton</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sec</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int&gt;0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of steps climbed and down</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Did the user stumble when ascending stairs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">likert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[[1, "I strongly disagree”, [2, "I disagree”], [3, "I slightly disagree”], [4, "Neutral”], [5, "I slightly agree”], [6. "I agree”], [7, "I strongly agree”]]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The use of the device was very easy.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">text</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How is perceived the system by the user</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">multiselect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[“Left knee”, “left ankle”, “right knee”, “right ankle”, “none”]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Were you perceiving unexpected pressure on some limbs?</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">W</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">select</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[“Left knee”, “left ankle”, “right knee”, “right ankle”, “none”]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Which limb was receiving most pressure?</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>With:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>itemID</code>: unique identifier (in the file) of the item.
+It can be a string, and contain any complex structure.
+The only constraint is that it has to be unique for the given questionnaire.</p>
+</li>
+<li>
+<p><code>type</code>: definition of the type of answer expected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Possible values: <code>value</code>, <code>text</code>, <code>boolean</code>, <code>likert</code>, <code>reverse_likert</code>, <code>select</code>, <code>multi_select</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>options</code>: additional information to represent the answer options (if needed)</p>
+</li>
+<li>
+<p><code>text</code>: item text</p>
+</li>
+<li>
+<p><code>unit</code>: answer unit indication (if any)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that the 5 columns previously detailed are the minimum ones.
+A questionnaire definition may include more columns if this is needed for special computations.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_factor_data_file"><a class="anchor" href="#_factor_data_file"></a>6.13.2. Factor Data File</h4>
+<div class="paragraph">
+<p><strong>Description</strong>: This file only contains the answers to each of the question asked.</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename</strong> : <code>subject_N_questionnaire_name.csv</code>, where <code>name</code> refers to the Factor Meta Data File this questionnaire answer is related to.</p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>: a table structure with the following content:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 15. Meta Data File structure sample</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">itemID</th>
+<th class="tableblock halign-left valign-top">answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"The installation was complex"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[0, 3]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">W</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>With:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>itemID</code>: the ID of the question answered, in relation with the questionnaire description file</p>
+</li>
+<li>
+<p><code>answer</code>: the response of the person interviewed</p>
+</li>
+<li>
+<p>The administration order being implicitly encoded in the row order (i.e first question: 2, 2nd: 1, 3rd: Y, ….</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>7. Examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section is still under construction. Our intention is to provide a complete set of examples for three fields: human, humanoids, and wearable robots locomotion dataset.</p>
+</div>
+<div class="paragraph">
+<p>In the following we use <code>{}</code> to factorize filenames:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name <code>subject_{01_03}_jointAngles.csv</code>, is used to name the three files <code>subject_01_jointAngles.csv</code>, <code>subject_02_jointAngles.csv</code> and <code>subject_03_jointAngles.csv</code>.</p>
+</li>
+<li>
+<p>Name <code>subject_{01_03}_run_{01-02}_jointAngles.csv</code> refers to files: <code>subject_01_run_01_jointAngles.csv</code>, <code>subject_01_run_02_jointAngles.csv</code>, <code>subject_02_run_01_jointAngles.csv</code>, <code>subject_02_run_02_jointAngles.csv</code>, <code>subject_03_run_01_jointAngles.csv</code>, <code>subject_03_run_02_jointAngles.csv</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_example_1"><a class="anchor" href="#_example_1"></a>7.1. Example 1</h3>
+<div class="paragraph">
+<p>The Laboratory HumanLab has done a study on Parkinson’s patients and recorded two subjects during overground walking, with inertial sensors.
+Three runs were recorded per subject.
+These are the files that they have produced to be compatible with the EUROBENCH Database.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Raw Files (format suggested, not mandatory)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>raw_data.txt</code></p>
+</li>
+<li>
+<p><code>subject_{01-02}_run_{01-03}_imu_raw.cappa</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Anthropometric Files</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>subject_01_anthropometry.yaml</code></p>
+</li>
+<li>
+<p><code>subject_02_anthropometry.yaml</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Electromyography Files</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>subject_{01-02}_run_{01-03}_emg.csv</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Gait Events Files</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>subject_{01-03}_run_{01-03}_gaitEvents.csv</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Testbed configuration related data file</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>testbed.yaml</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There is only a unique testbed configuration file, as all runs are repetitions of the same experimental conditions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_2"><a class="anchor" href="#_example_2"></a>7.2. Example 2</h3>
+<div class="paragraph">
+<p>The Laboratory ExoLab has done a study on healthy people wearing an H2 exoskeleton and recorded one subject during slope ascending, with optical markers.
+Three runs were recorded.
+The experiment was then repeated changing the support level of the exoskeleton</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Raw Files (format suggested, not mandatory)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>raw_data.txt</code></p>
+</li>
+<li>
+<p><code>cond_{01-02}_run_{01-03}_markers_raw.cappa</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Anthropometric Files</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>anthropometry.yaml</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Gait Events Files</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>cond_{01-02}_run_{01-03}_gaitEvents.csv</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Testbed related data file</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>cond_{01-02}_testbed.yaml</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>label <code>subject</code> is discarded as a unique subject is considered.
+The level of exoskeleton support is specified through a variable in <code>cond_01_testbed.yaml</code> and <code>cond_02_testbed.yaml</code> files.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_3"><a class="anchor" href="#_example_3"></a>7.3. Example 3</h3>
+<div class="paragraph">
+<p>The Laboratory HumanoidLab has done a study on the new walking pattern generator and recorded the robot during flat ground walking. Two runs were recorded. These are the files that they submit to be compatible with the EUROBENCH Database.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Raw Files (format suggested, not mandatory)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rosbag_{01-02}.bag</code> (containing /tf topic)</p>
+</li>
+<li>
+<p><code>humanoid_markers_raw_{01-02}.cappa</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>.urdf File</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>humanoid.urdf</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Gait Events Files</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>run_01_gaitEvents.csv</code></p>
+</li>
+<li>
+<p><code>run_02_gaitEvents.csv</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Testbed related data file</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>testbed.yaml</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_4"><a class="anchor" href="#_example_4"></a>7.4. Example 4</h3>
+<div class="paragraph">
+<p>A laboratory studied human behavior during sit-to-stand activity.
+Two subjects were involved.
+Each subject were asked to perform 5 sit-to-stand, and data collection was stopped once the person was standing up.
+Then the operation was repeated with eyes closed, to see the importance of the visual clue.
+An instrumented chair was used, which is collecting a set of measures, in a format specified by the protocol.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Anthropometric Files</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>subject_{01-02}_anthropometry.yaml</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Gait Events Files</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>subject_{01-02}_cond_{01-02}_run_{01-05}_jointAngle.csv</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Chair sensors data</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>subject_{01-02}_cond_{01-02}_run_{01-05}_platformData.csv</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Testbed related data file</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>cond_{01-02}_testbed.yaml</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The eyes status (open/closed) is set through a parameter in files <code>cond_01_testbed.yaml</code> and <code>cond_02_testbed.yaml</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>8. References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>David A. Winter. Biomechanics and Motor Control of Human Movement, 4th Edition. Willey (2009)</p>
+</li>
+<li>
+<p><a href="https://docs.vicon.com/display/Nexus25/Plug-in+Gait+kinematic+variables">Vicon Documentation: Plug-in Gait kinematics variables</a></p>
+</li>
+<li>
+<p><a href="https://docs.vicon.com/display/Nexus25/About+the+Plug-in+Gait+model#AboutthePlug-inGaitmodel-PIGRefs">Vison Documentation: About the Plug-in Gait model</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Each repetition of an experiment. Synonym of trial (e.g. One experiment has 10 subjects and each subject executes 5 runs).
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

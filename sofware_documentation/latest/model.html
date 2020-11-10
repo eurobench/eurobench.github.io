@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Human model :: Eurobench framework documentation</title>
+    <link rel="canonical" href="https://antora.gitlab.io/demo/docs-site/sofware_documentation/latest/model.html">
+    <meta name="keywords" content="AsciiDoc">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://antora.gitlab.io/demo/docs-site">Eurobench framework documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <!--<div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div> -->
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="sofware_documentation" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Software documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Welcome</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="data_format.html">Input data format</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="model.html">Human model</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pi_spec.html">Performance indicator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="template.html">Protocol template</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Software documentation</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Software documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Software documentation</a></li>
+    <li><a href="model.html">Human model</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/aremazeilles/eurobench_documentation/edit/master/modules/ROOT/pages/model.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Human model</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here are defined the anthropomorphic models considered in Eurobench protocols.
+Concepts and label described here are then used and referenced in the <a href="data_format.html#Eurobench Data Format" class="page">data format</a> used to collect experimental measures.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_joint_centers"><a class="anchor" href="#_joint_centers"></a>1. Joint centers</h2>
+<div class="sectionbody">
+<div id="fig_joint_center_label" class="imageblock text-center">
+<div class="content">
+<img src="_images/df_joint_center_label.png" alt="df joint center label">
+</div>
+<div class="title">Figure 1. Labels of Joints centers</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_human_body_segment"><a class="anchor" href="#_human_body_segment"></a>2. Human body segment</h2>
+<div class="sectionbody">
+<div id="sec_hbs" class="paragraph">
+<p>Each body segment is a single body with multiple dimensions, inertial and mass properties. Each body segment is delimited by one or more joints. Depending on the availability and need for properties different models could be constructed by merging adjacent segments or approximating them to null-mass bodies<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>Each segment has a key label assigned, for bilateral bodies use the prefix "_r" or "_l" to differentiate between right and left bodies. E.g. "r_hand"</p>
+</div>
+<table id="table_body_segment" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. List of body segments and joints considered in our kinematic model proposed.</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Group</th>
+<th class="tableblock halign-left valign-top">Segments</th>
+<th class="tableblock halign-left valign-top">Delimiting Joints</th>
+<th class="tableblock halign-left valign-top">key label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><strong>Upper limb</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wrist axis / 2nd knuckle middle finger</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hand</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forearm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">elbow axis / ulnar styloid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forearm</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Upper Arm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">glenhumeral axis / elbow axis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">upper_arm</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shoulder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C7-T1 / glenhumeral axis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shoulder</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="5"><p class="tableblock"><strong>Lower limb</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Foot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lateral malleolus / head 2nd metatarsal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">foot</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shank</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">femoral condyles / medial malleolus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">shank</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thigh</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">greater trochanter / femoral condyles</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">thigh</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Pelvis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L4-L5 / greater trochanters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pelvis</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">greater trochanters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pelvis_w<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Head</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C7-T1 &amp; first rip / ear canal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">head</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="6"><p class="tableblock"><strong>Trunk</strong><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trunk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C7-T1 / T12-L1 &amp; diaphragm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">trunk</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Torso<br>
+ (trunk + shoulders)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C7-T1 / T12-L1 &amp; diaphragm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">torso</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">glenhumeral axes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">torso_w<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abdomen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T12-L1 / L4-L5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">abdomen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Back<br>
+ (trunk+ shoulders + abdomen)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C7-T1 / L4-L5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">back</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">glenhumeral axes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">back_w<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup></p></td>
+</tr>
+</tbody>
+</table>
+<div id="fig:df_segment_label" class="imageblock text-center">
+<div class="content">
+<img src="_images/df_segment_label.png" alt="df segment label">
+</div>
+<div class="title">Figure 2. Segments Labels</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sec_angles"><a class="anchor" href="#sec_angles"></a>3. Angles definition</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All the angle definitions here presented are based on the Plug-in Gait model from Vicon.
+Joint angles are represented by the YXZ Cardan angles derived by comparing the relative orientations of the proximal (parent) and distal (child) segments around each joint (see Figure 4).</p>
+</div>
+<div id="fig:df_angle_convention" class="imageblock text-center">
+<div class="content">
+<img src="_images/df_angle_convention.png" alt="df angle convention">
+</div>
+<div class="title">Figure 3. Representation of the lower limb angle convention. Figure taken from <a href="https://docs.vicon.com/display/Nexus25/About+the+Plug-in+Gait+model#AboutthePlug-inGaitmodel-PIGRefs">Vicon Documents: Plugin Gait kinematic variables</a></div>
+</div>
+<div class="sect2">
+<h3 id="_hip"><a class="anchor" href="#_hip"></a>3.1. Hip</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Hip ab/adduction (Relative) (Label: hip_adduction)</strong> Hip adduction is measured in the plane of the hip flexion axis and the knee joint center.
+The angle is calculated between the long axis of the thigh and the frontal axis of the pelvis projected into this plane.
+A positive number corresponds to an adducted (inwardly moved) leg.</p>
+</li>
+<li>
+<p><strong>Hip flexion/extension (Relative) (Label: hip_flexion)</strong> Hip flexion is calculated about an axis parallel to the pelvic transverse axis which passes through the hip joint center.
+The sagittal thigh axis is projected onto the plane perpendicular to the hip flexion axis.
+Hip flexion is then the angle between the projected sagittal thigh axis and the sagittal pelvic axis.
+A positive (Flexion) angle value corresponds to the situation in which the knee is in front of the body.</p>
+</li>
+<li>
+<p><strong>Hip rotation (Relative) (Label: hip_rotation)</strong> Hip rotation is measured about the long axis of the thigh segment and is calculated between the sagittal axis of the thigh and the sagittal axis of the pelvis projected into the plane perpendicular to the long axis of the thigh.
+The sign is such that a positive hip rotation corresponds to an internally rotated thigh.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_knee"><a class="anchor" href="#_knee"></a>3.2. Knee</h3>
+<div class="paragraph">
+<p>Knee angles are derived from the femur and the untorsioned tibia segments.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Knee ab/adduction (Knee valgus/varus) (Relative) (Label: knee_adduction)</strong> This is measured in the plane of the knee flexion axis and the ankle center, and is the angle between the long axis of the shank and the long axis of the thigh projected into this plane.
+A positive number corresponds to varus (outward bend of the knee).</p>
+</li>
+<li>
+<p><strong>Knee flexion/extension (Relative) (Label: knee_flexion)</strong> The sagittal shank axis is projected into the plane perpendicular to the knee flexion axis.
+Knee flexion is the angle in that plane between this projection and the sagittal thigh axis.
+The sign is such that a positive angle corresponds to a flexed knee.</p>
+</li>
+<li>
+<p><strong>Knee rotation (Relative) (Label: knee_rotation)</strong> Knee rotation is measured about the long axis of the shank.
+It is measured as the angle between the sagittal axis of the shank and the sagittal axis of the thigh, projected into a plane perpendicular to the long axis of the shank.
+The sign is such that a positive angle corresponds to internal rotation.
+If a tibial torsion value is present in the Session form, it is subtracted from the calculated knee rotation value.
+A positive tibial torsion value therefore has the effect of providing a constant external offset to knee rotation.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ankle"><a class="anchor" href="#_ankle"></a>3.3. Ankle</h3>
+<div class="paragraph">
+<p>Ankle angles are derived from the torsioned tibia and the foot segment.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Ankle dorsi/plantar flexion (Relative) (Label: ankle_flexion)</strong> The foot vector is projected into the foot sagittal plane.
+The angle between the foot vector and the sagittal axis of the shank is the foot dorsi/plantar flexion.
+A positive number corresponds to dorsiflexion.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_foot"><a class="anchor" href="#_foot"></a>3.4. Foot</h3>
+<div class="paragraph">
+<p>In the case of the feet, because they are defined in a different orientation to the tibia segments, an offset of 90 degrees is added to the flexion angle. This does not affect the Cardan angle calculation of the other angles because the flexion angle is the first in the rotation sequence.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Foot progression (Absolute) (Label: foot_progression)</strong> This is the angle between the foot vector (projected into the laboratory&#8217;s transverse plane) and the sagittal laboratory axis. A positive number corresponds to an internally rotated foot.</p>
+</li>
+<li>
+<p><strong>Foot rotation (Relative) (Label: foot_rotation)</strong> This is measured about an axis perpendicular to the foot vector and the ankle flexion axis.
+It is the angle between the foot vector and the sagittal axis of the shank, projected into the foot transverse plane.
+A positive number corresponds to an internal rotation.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_shoulder"><a class="anchor" href="#_shoulder"></a>3.5. Shoulder</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Shoulder ab/adduction (Relative) (Label: shoulder_adduction)</strong> The angle is calculated between the transverse axis of the humerus and the transverse axis of the thorax around a floating sagittal axis.
+A negative number corresponds to an abducted (outwardly moved) arm.</p>
+</li>
+<li>
+<p><strong>Shoulder flexion/extension (Relative) (Label: shoulder_flexion)</strong> Shoulder flexion is calculated about an axis parallel to the thorax transverse axis.
+Shoulder flexion is the angle between the projected sagittal-humerus axis and the sagittal-thorax axis around the fixed transverse axis of the thorax.
+A positive (flexion) angle value corresponds to the situation in which the arm is in front of the body.</p>
+</li>
+<li>
+<p><strong>Shoulder rotation (Relative) (Label: shoulder_rotation)</strong> Shoulder rotation is measured about the long axis of the humerus segment and is calculated between the sagittal axis of the humerus and the sagittal axis of the thorax around a floating frontal axis.
+The sign is such that a positive shoulder rotation corresponds to an internally rotated humerus.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_elbow"><a class="anchor" href="#_elbow"></a>3.6. Elbow</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Elbow flexion/extension (Relative) (Label: elbow_flexion)</strong> Elbow flexion is calculated between the sagittal radius axis and the sagittal humerus axis around the fixed transverse axis of the humerus.
+A positive number indicates a flexion angle.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_wrist"><a class="anchor" href="#_wrist"></a>3.7. Wrist</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Wrist ab/adduction (Relative) (Label: wrist_adduction)</strong> The angle is calculated between the transverse axis of the hand and the transverse axis of the radius around a floating sagittal axis.
+A positive number corresponds to the hand abducting toward the thumb.</p>
+</li>
+<li>
+<p>Wrist flexion/extension (Relative) (Label: wrist_flexion) Wrist flexion is the angle between the sagittal hand axis and the sagittal radius axis around the fixed transverse axis of the radius.
+A positive (flexion) angle value corresponds to the situation in which the wrist bends toward the palm.</p>
+</li>
+<li>
+<p><strong>Wrist rotation (Relative) (Label: wrist_rotation)</strong> Wrist rotation is measured about the long axis of the hand segment and is calculated between the sagittal axis of the hand and the sagittal axis of the radius around a floating frontal axis.
+The sign is such that a positive wrist rotation corresponds to the hand rotating in the direction of the thumb.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_waist"><a class="anchor" href="#_waist"></a>3.8. Waist</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pelvic obliquity (Absolute) (Label: pelvis_obliquity)</strong> Pelvic obliquity is measured about an axis of rotation perpendicular to the axes of the other two rotations.
+This axis does not necessarily correspond with any of the laboratory or pelvic axes. Pelvic obliquity is measured in the plane of the laboratory transverse axis and the pelvic frontal axis.
+The angle is measured between the projection into the plane of the transverse pelvic axis and projection into the plane of the laboratory transverse axis (the horizontal axis perpendicular to the subject&#8217;s axis of progression).
+A negative pelvic obliquity value (down) relates to the situation in which the opposite side of the pelvis is lower.</p>
+</li>
+<li>
+<p><strong>Pelvic rotation (Absolute) (Label: pelvis_rotation)</strong> Pelvic rotation is calculated about the frontal axis of the pelvic coordinate system.
+It is the angle measured between the sagittal axis of the pelvis and the sagittal laboratory axis (axis closest to subject&#8217;s direction of progression) projected into the pelvis transverse plane.
+A negative (external) pelvic rotation value means the opposite side is in front.</p>
+</li>
+<li>
+<p><strong>Pelvic tilt (Absolute) (Label: pelvis_tilt)</strong> Pelvic tilt is normally calculated about the laboratory&#8217;s transverse axis.
+If the subject&#8217;s direction of forward progression is closer to the laboratory&#8217;s sagittal axis, however, then pelvic tilt is measured about this axis.
+The sagittal pelvic axis, which lies in the pelvis transverse plane, is normally projected into the laboratory sagittal plane.
+Pelvic tilt is measured as the angle in this plane between the projected sagittal pelvic axis and the sagittal laboratory axis.
+A positive value (up) corresponds to the normal situation in which the PSIS is higher than the ASIS.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_spine"><a class="anchor" href="#_spine"></a>3.9. Spine</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Spine flexion/extension (Relative) (Label: spine_flexion)</strong> Spine flexion is the angle between the sagittal thorax axis and the sagittal pelvis axis around the fixed transverse axis of the pelvis. A positive (flexion) angle value corresponds to the situation in which the thorax is tilted forward.</p>
+</li>
+<li>
+<p><strong>Spine lateral flexion (Relative) (Label: spine_lateralFlexion)</strong> The angle between the long axis of the thorax and the long axis of the pelvis, around a floating transverse axis.</p>
+</li>
+<li>
+<p><strong>Spine rotation (Relative) (Label: spine_rotation)</strong> It is measured as the angle between the sagittal axis of the thorax and the sagittal axis of the pelvis, around a floating frontal axis.
+As the thorax frontal axis points downward while the pelvis frontal axis points upward, a positive angle therefore refers to rotation of the thorax toward the opposite side.</p>
+</li>
+<li>
+<p><strong>Thorax obliquity (Absolute) (Label: thorax_obliquity)</strong> Thorax obliquity is measured about an axis of rotation perpendicular to the axes of the other two rotations.
+This axis does not necessarily correspond with any of the laboratory or thorax axes. Thorax obliquity is measured in the plane of the laboratory transverse axis and the Thorax frontal axis.
+The angle is measured between the projection into the plane of the transverse thorax axis and projection into the plane of the laboratory transverse axis (the horizontal axis perpendicular to the subject&#8217;s axis of progression.
+As the thorax segment is defined with the frontal Z axis point downward a positive (up) thorax obliquity angle relates to the situation in which the opposite side of the thorax is lower.</p>
+</li>
+<li>
+<p><strong>Thorax rotation (Absolute) (Label: thorax_rotation)</strong> Thorax rotation is calculated about the frontal axis of the thorax coordinate system.
+It is the angle measured between the sagittal axis of the thorax and the sagittal laboratory axis (axis closest to subject&#8217;s direction of progression) projected into the thorax transverse plane.
+As the thorax segment is defined with the frontal Z axis point downward a positive (internal) thorax rotation value means the opposite side is in front.</p>
+</li>
+<li>
+<p><strong>Thorax tilt (Absolute) (Label: thorax_tilt)</strong> Thorax tilt is normally calculated about the laboratory&#8217;s transverse axis.
+If the subject&#8217;s direction of forward progression is closer to the laboratory&#8217;s sagittal axis, however, then thorax tilt is measured about this axis.
+The sagittal thorax axis is normally projected into the laboratory sagittal plane. Thorax tilt is measured as the angle in this plane between the projected sagittal thorax axis and the sagittal laboratory axis.
+A positive value (up) corresponds to forward thorax tilt.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_neck"><a class="anchor" href="#_neck"></a>3.10. Neck</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Head obliquity (Absolute) (Label: head_obliquity)</strong> Head lateral tilt is measured about an axis of rotation perpendicular to the axes of the other two rotations.
+This axis does not necessarily correspond with any of the laboratory or head axes.
+Head lateral tilt is measured in the plane of the laboratory transverse axis and the head frontal axis.
+The angle is measured between the projection into the plane of the transverse head axis and projection into the plane of the laboratory transverse axis (the horizontal axis perpendicular to the subject&#8217;s axis of progression).
+A negative head obliquity value (down) relates to the situation in which the opposite side of the head is lower.</p>
+</li>
+<li>
+<p><strong>Head rotation (Absolute) (Label: head_rotation)</strong> Head rotation is calculated about the frontal axis of the head coordinate system.
+It is the angle measured between the sagittal axis of the head and the sagittal laboratory axis (axis closest to subject&#8217;s direction of progression) projected into the head transverse plane.
+A negative (external) head rotation value means the opposite side is in front.</p>
+</li>
+<li>
+<p><strong>Head tilt (Absolute) (Label: head_tilt)</strong> Head tilt is normally calculated about the laboratory&#8217;s transverse axis.
+If the subject&#8217;s direction of forward progression is closer to the laboratory&#8217;s sagittal axis, however, then head tilt is measured about this axis.
+The sagittal head axis is normally projected into the laboratory sagittal plane.
+Head tilt is measured as the angle in this plane between the projected sagittal head axis and the sagittal laboratory axis.
+A positive value (up) corresponds to forward head tilt.</p>
+</li>
+<li>
+<p><strong>Neck flexion/extension (Relative) (Label: neck_flexion)</strong> The sagittal head axis is projected onto the plane perpendicular to the thorax sagittal axis.
+Neck flexion is then the angle between the projected sagittal head axis and the sagittal thorax axis around the fixed transverse axis of the thorax.
+A positive (flexion) angle value corresponds to the situation in which the head is tilted forward.</p>
+</li>
+<li>
+<p><strong>Neck lateral flexion (Relative) (Label: neck_lateral_flexion)</strong> The angle between the long axis of the head and the long axis of the thorax around a floating transverse axis.</p>
+</li>
+<li>
+<p><strong>Neck rotation (Relative) (Label: neck_rotation)</strong> Neck rotation is measured about the long axis of the head.
+It is measured as the angle between the sagittal axis of the head and the sagittal axis of the thorax, around a floating frontal axis.
+As the thorax frontal axis points downward while the head frontal axis points upward, a positive angle therefore refers to rotation of the head toward the opposite side.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. e.g. the "shoulder" segment is useful to compute degrees of freedom, but its mass property is difficult to assess and not generally available, so it could be used with a null mass or merged with the trunk
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. the pelvis is a single rigid body with more than one dimension. If referring to the body segment use only the "pelvis" label, if referring to its dimensions use "r_pelvis","l_pelvis" and "pelvis_w"
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. depending on availability and need of mass and inertia information the trunk can be used alone, include the shoulders or include shoulders and abdomen.
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. the trunk is a single rigid body with more than one dimensions. If referring to the body segment use only the "trunk" label
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. the back is a single rigid body with more than one dimensions. If referring to the body segment use only the "back_full" label
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

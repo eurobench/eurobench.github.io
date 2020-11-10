@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eurobench template :: Eurobench framework documentation</title>
+    <link rel="canonical" href="https://antora.gitlab.io/demo/docs-site/sofware_documentation/latest/template.html">
+    <meta name="keywords" content="AsciiDoc">
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://antora.gitlab.io/demo/docs-site">Eurobench framework documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <!--<div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div> -->
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="sofware_documentation" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Software documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Welcome</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="data_format.html">Input data format</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="model.html">Human model</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pi_spec.html">Performance indicator</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="template.html">Protocol template</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Software documentation</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Software documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Software documentation</a></li>
+    <li><a href="template.html">Protocol template</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/aremazeilles/eurobench_documentation/edit/master/modules/ROOT/pages/template.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Eurobench template</h1>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The addition of new protocol to the Eurobench Benchmarking Software requires providing a set of information for filling the database.</p>
+</div>
+<div class="paragraph">
+<p>An <a href="_attachments/protocol_template.xlsx">excel sheet</a> is provided to gather that information.</p>
+</div>
+<div class="paragraph">
+<p>All tables are followed by an explanation of each of the fields that deserves it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scenario_sheet"><a class="anchor" href="#_scenario_sheet"></a>2. Scenario sheet</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Scenario Template sheet</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Template designer description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">short name</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assessed System Abilities</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><code>short name</code>: single sentence scenario description.
+Likely to be used for filtering purposes in the front-end to help the user find the appropriate protocol.</p>
+</li>
+<li>
+<p><code>description</code>: extended description of the scenario.
+Considering structured text (markdown or adoc), possibly accepting latex equations.</p>
+</li>
+<li>
+<p><code>image</code>: single image that can be provided to visually illustrate the scenario
+Logo are accepted.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_protocol_sheet"><a class="anchor" href="#_protocol_sheet"></a>3. Protocol sheet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The table is described per block just for easing the description of it.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Protocol Template sheet - Generalities</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Template designer description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keywords</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Suitable Bipedal systems</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated PI Algo</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Name</code>: single sentence protocol description</p>
+</li>
+<li>
+<p><code>Definition</code>: General description of the protocol (like a sentence).
+Considering structured text (markdown or adoc), possibly accepting latex equations.</p>
+</li>
+<li>
+<p><code>Image</code>: illustrative image</p>
+</li>
+<li>
+<p><code>keywords</code>: filtering terms that can be associated to that protocol.
+Can be related to the action asked to the subject or testbed characteristics&#8230;&#8203;</p>
+</li>
+<li>
+<p><code>Suitable bipedal systems</code>: definition of the subjects for which the protocol is designed.
+Can only contain values like [<code>humanoid</code>, <code>prosthesis</code>, <code>exoskeleton</code>, <code>human</code>], where <code>human</code> stands for a human subject not using any robotic device.</p>
+</li>
+<li>
+<p><code>Associated PI algo</code>: List of software routines that are to be used to score any experiment following this protocol.
+Several can be provided (considering that a PI algo can compute several PI scores).
+Should be related to the short name provided within the <a href="#PI Algo sheet">[PI Algo sheet]</a>.</p>
+</li>
+</ul>
+</div>
+<table id="table_controlled_variables" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Protocol Template sheet - Controlled variables</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">name</th>
+<th class="tableblock halign-left valign-top">Definition</th>
+<th class="tableblock halign-left valign-top">type</th>
+<th class="tableblock halign-left valign-top">range</th>
+<th class="tableblock halign-left valign-top">unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Controlled variables are conditional settings that should be filled by an experimenter, to describe their experimentation conditions.
+These variables are not supposed to change during an experiment trial execution.
+Parameters can be related to either:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a configuration parameter of the testbed (for a walking on slope protocol, the controlled variables could be the slope angle and the slope length).</p>
+</li>
+<li>
+<p>a configuration of the robotic system (like setting different levels of assistance of an exoskeleton, or testing different set of tuning parameters of an humanoid)</p>
+</li>
+<li>
+<p>a behavior indication provided to the subject (like do the action with eyes closed)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The controlled variables, together with the protocol spec, should enable anybody to reproduce a given execution with exactly the same settings.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Name</code>: single word.
+If needed <code>under_scored</code> like name can be used.</p>
+</li>
+<li>
+<p><code>Definition</code>: text description of the protocol.</p>
+</li>
+<li>
+<p><code>type</code>: string, integer, float&#8230;&#8203;</p>
+</li>
+<li>
+<p><code>range</code>: [minimum, maximum] value the variable can have</p>
+</li>
+<li>
+<p><code>unit</code>: if any, variable unit (preferably using the <a href="https://en.wikipedia.org/wiki/International_System_of_Units">International System of Units convention</a>).</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Protocol Template sheet - Testbed</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Type (Sensor, actuator or combined)</th>
+<th class="tableblock halign-left valign-top">Technical file sheet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Each item that can be bought and installed without customization have to be listed (e.g. motion capture system, IMU, force platform, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>If a specific instrumented equipment has to be constructed, it has to be mentioned as a standalone item, even if it includes several sensors and or actuators.
+The technical file sheet should provide the <em>BOM</em> (Bill of Materials), and the mounting instructions.
+Example of entry could be <em>instrumented chair</em>, or <em>sensorized wall</em>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Protocol Template sheet - Protocol Description</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">General description</th>
+<th class="tableblock halign-left valign-top"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Step</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>As a recipe, the Protocol description should provide all the successive operations should conduct the experimenter to conduct an experimentation, from the system preparation, subject preparation to the execution and data collection.</p>
+</div>
+<div class="paragraph">
+<p>The field <em>General description</em> should provide a short (e.g. one sentence) overview of the action taking place during the experimentation.
+This table may not contain enough information to detail all the steps (like how and where to place markers on human bodies).
+We assume more exhaustive description will be provided with the documentation associated to the protocol, aside that excel sheet.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pi_sheet"><a class="anchor" href="#_pi_sheet"></a>4. PI Sheet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First we start reminding two concepts (this should be brought to a dedicated page):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>Performance Indicator</code> (PI) can be associated to an outcome parameter obtained used to score an experimentation.
+It can be related to a physical dimension we want to characterize, or to a subjective (based on human scoring) evaluation of a system.
+A PI can be computed from different input information (motion capture, IMU …), and thus be related to different types of code (or PI Algo)..</p>
+</li>
+<li>
+<p>A <code>Performance Indicator Algorithm</code> (PI Algo, also referred to as benchmarking algorithm, or software routine, or processing routines) corresponds to a specific code implementation that is able to compute one or several PIs.
+The PI Algo is naturally associated to specific input information that is needed for making the computation (or run the algorithm).</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Performance Indicator sheet</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Template designer description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unit</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">output_type</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">intra_run aggregation</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">inter_run aggregation</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code>: descriptive short name (using underscore).
+This name should be use the PI Algo for storing the corresponding the outcome parameter when executed.</p>
+</li>
+<li>
+<p><code>Description</code>: Extended description of the PI (should explain what it is about)</p>
+</li>
+<li>
+<p><code>Unit</code>: If any</p>
+</li>
+<li>
+<p><code>output_type</code>: Related to the output file containing the PI score.
+Selection in default type defined: <code>[scalar, vector, matrix]</code>.</p>
+</li>
+<li>
+<p><code>intra_run aggregation</code>: How to compress the PI obtained in one run into a more compact representation.
+Selection in default type defined.</p>
+</li>
+<li>
+<p><code>inter_run aggregation</code>: How to compress several PIs obtained across different runs into one  representative PI of the entire experiment.
+Selection in default type defined.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some item deserves more detailed explanation:</p>
+</div>
+<div class="sect2">
+<h3 id="_output_type_field"><a class="anchor" href="#_output_type_field"></a>4.1. output type field</h3>
+<div class="paragraph">
+<p>The objective type is to define the expected structure of the PI.
+Ideally a unique value would ease everything, but we can envision several cases where we prefer keeping several values.
+A PI value is a <a href="https://fr.wikipedia.org/wiki/YAML">YAML</a> file with a structure like this one:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'vector'
+value: [0.96867, 1.01667, 0.98843, 0.95168, 0.87936, 0.94576, 0.87802, 0.87571, 0.81802, 0.82336]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The PI type is in that case a vector.
+We envision for now outputs of type <code>scalar</code>, <code>vector</code>, <code>matrix</code>, <code>labelled_matrix</code> and <code>string</code>.
+More details are available on the <a href="pi_spec.html#Output data" class="page">PI specification file</a> file.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_intra_run_aggregation"><a class="anchor" href="#_intra_run_aggregation"></a>4.2. intra-run aggregation</h3>
+<div class="paragraph">
+<p>In the previous example, we see that the output is represented by a possibly long vector.
+The Intra-run aggregation information provides the system with an operator tool for “compressing” that vector into an (hopefully) more digest information.
+If the <code>mean</code> operator is selected the PI Manager will adjust the previous file to contain the following extended information:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'vector'
+value: [0.96867, 1.01667, 0.98843, 0.95168, 0.87936, 0.94576, 0.87802, 0.87571, 0.81802, 0.82336]
+aggregations: [[0, 'mean', 0.9145679999999998]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>0</code> indicates the row/column to which the aggregation has been applied. Several rows/columns could be specified in the case of an ouput of the type <code>matrix</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'matrix'
+value: [[0.96867, 1.01667, 0.98843, 0.95168, 0.87936, 0.94576, 0.87802, 0.87571, 0.81802, 0.82336],[0.96867, 1.01667, 0.98843, 0.95168, 0.87936, 0.94576, 0.87802, 0.87571, 0.81802, 0.82336], [0.96867, 1.01667, 0.98843, 0.95168, 0.87936, 0.94576, 0.87802, 0.87571, 0.81802, 0.82336]]
+aggregations: [[0, 'mean', 0.9145679999999998], [2, 'mean', 0.9145679999999998]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That compressed information can now be presented to the user on the Front-End.
+The currently available operators are related to panda operators, i.e : <code>[mean, median, mode, std, min, max, var, sum, abs, none]</code>.
+Note that we can define various operators for one PI (like mean and standard deviation).</p>
+</div>
+<div class="paragraph">
+<p>The intra-run aggregation is thus using the following pattern: <code>[ [number, operator] ]</code>.
+Obviously it does not need to be filled for scalar output.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_inter_run_aggregation"><a class="anchor" href="#_inter_run_aggregation"></a>4.3. inter-run aggregation</h3>
+<div class="paragraph">
+<p>A similar operation is needed for combining the scores obtained for each run, to generate a PI for the whole experiment.
+Similar operators are proposed, but they will be computed on all the values obtained for all runs.
+For instance, if the experiment contains 3 runs, characterized with the PI <code>step_length_left</code>, we would have after executing the PI Algo 3-run PI files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Subject_10_trial_01_pi_step_length_left.yaml</code>,</p>
+</li>
+<li>
+<p><code>Subject_10_trial_02_pi_step_length_left.yaml</code>,</p>
+</li>
+<li>
+<p><code>Subject_10_trial_03_pi_step_length_left.yaml</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Inter-run aggregation will enable to generate a PI score for the whole experiment associated to the left step length:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">aggregations: [[0, 'mean', 1.0224573076923078]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Assuming that the operator <code>mean</code> was indicated in the Inter-run aggregation field.
+That score could be presented to the user on the front-end, to summarize the score obtained by the experimentation on that concrete PI.</p>
+</div>
+<div class="paragraph">
+<p>The inter-run aggregation is thus using the following pattern: <code>[ [number, operator] ]</code>.
+It has to be filled for all output format, even scalar (since we still have to aggregate the scalar value of each run).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pi_algo_sheet"><a class="anchor" href="#_pi_algo_sheet"></a>5. PI Algo Sheet</h2>
+<div class="sectionbody">
+<table id="pi-table" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Performance Indicator sheet</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Template designer description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Url paper</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Url code</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated PI</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Input files</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Input command</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code>: descriptive name</p>
+</li>
+<li>
+<p><code>description</code>: description of the algorithm used for making the computation</p>
+</li>
+<li>
+<p><code>url paper</code>: link to a paper describing the algorithm used or closely related (if available)</p>
+</li>
+<li>
+<p><code>url_code</code>: link to repository code.
+Could be public or private (additional field?).</p>
+</li>
+<li>
+<p><code>associated PI</code>: Selection of the different PIs that the algorithm will compute</p>
+</li>
+<li>
+<p><code>input files</code>: List of input files expected (according to the <a href="data_format.html#Eurobench Data Format" class="page">Eurobench Data Format</a>)</p>
+</li>
+<li>
+<p><code>input command</code>: Name directly connected to the input files + dependent variables info</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_input_command"><a class="anchor" href="#_input_command"></a>5.1. Input command</h3>
+<div class="paragraph">
+<p>At this moment it contains the entry point and the parameters the entry point is expecting.
+The format for the string is the following one.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>entry_point;param_1;param_2;param_N</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example: <code>pi_csic: ./run_pi;jointAngles.csv;anthropometry.yaml</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>entry point = <code>./run_pi</code></p>
+</li>
+<li>
+<p>param_1 = <code>jointAngles.csv</code> (it will look for a csv file containing jointAngles in its name)</p>
+</li>
+<li>
+<p>param_2 = <code>anthropometry.yaml</code> (it will look for a <a href="https://fr.wikipedia.org/wiki/YAML">YAML</a> which contains anthropometry in the filename)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The system will use that pattern to find appropriate files within the experimental data files made available by the experimenter.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Note that the PI algorithm is expected to generate as many files as the number of PI associated to it.
+Furthermore, the name of each result file should be the name of the PI it represents (as defined in the field name of the <a href="#pi-table">PI table</a>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>With an example: <code>pi_csic</code> algorithm scores 6 PIs for a single run:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>step_lengh_right</code>,</p>
+</li>
+<li>
+<p><code>step_length_left</code>,</p>
+</li>
+<li>
+<p><code>stride_time_left</code>,</p>
+</li>
+<li>
+<p><code>stride_time_right</code>,</p>
+</li>
+<li>
+<p><code>step_time_left</code>,</p>
+</li>
+<li>
+<p><code>step_time_right</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So that after executing the <code>pi_csic</code> algorithm on one run, we expect to get 6 files generated:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>step_lengh_right.yaml</code>,</p>
+</li>
+<li>
+<p><code>step_length_left.yaml</code>,</p>
+</li>
+<li>
+<p><code>stride_time_left.yaml</code>,</p>
+</li>
+<li>
+<p><code>stride_time_right.yaml</code>,</p>
+</li>
+<li>
+<p><code>step_time_left.yaml</code>,</p>
+</li>
+<li>
+<p><code>step_time_right.yaml</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All files should have a <a href="https://fr.wikipedia.org/wiki/YAML">YAML</a> structure, following the structure associated to each PI (as defined in the related field output_type of the <a href="#pi-table">PI table</a>).</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
