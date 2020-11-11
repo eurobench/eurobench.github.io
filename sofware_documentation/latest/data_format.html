@@ -1042,7 +1042,68 @@ It is usually defined as <em>the unique point where the weighted relative positi
 </table>
 </div>
 <div class="sect2">
-<h3 id="_angular_momentum_around_the_center_of_mass"><a class="anchor" href="#_angular_momentum_around_the_center_of_mass"></a>6.5. Angular Momentum around the Center of Mass</h3>
+<h3 id="_joint_states"><a class="anchor" href="#_joint_states"></a>6.5. Joint States</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: contains the state of a set of joints along time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong> : <code>jointStates</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.csv</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Joint states file structure and unit (velocity and acceleration are only used if measured)</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">time</th>
+<th class="tableblock halign-left valign-top"><code>label_1_pos</code></th>
+<th class="tableblock halign-left valign-top"><code>label_1_vel</code></th>
+<th class="tableblock halign-left valign-top"><code>label_1_acc</code></th>
+<th class="tableblock halign-left valign-top"><code>label_2_pos</code></th>
+<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rad</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rad.s<sup>-1</sup></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rad. s<sup>-2</sup></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rad</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>where <code>label_i</code> should be replaced by the name of the joint, as specified in the protocol documentation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A jointState file can refer to joint(s) of a robotic device, or to joint(s) of an element of the testbed.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_angular_momentum_around_the_center_of_mass"><a class="anchor" href="#_angular_momentum_around_the_center_of_mass"></a>6.6. Angular Momentum around the Center of Mass</h3>
 <div class="paragraph">
 <p>The angular momentum of a body is a vector quantity that represents the magnitude and the direction in which the body rotates about a reference point <a href="#Bennett2010">[Bennett2010]</a>.
 We refer here to the total body angular momentum, around the total body Center of Mass (<code>CoM</code>), expressed in global coordinates.
@@ -1061,7 +1122,7 @@ That is, the sum of the angular momenta of different segments around the total b
 <p><strong>File structure</strong>:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Angular Momentum file structure and unit</caption>
+<caption class="title">Table 7. Angular Momentum file structure and unit</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1103,7 +1164,7 @@ That is, the sum of the angular momenta of different segments around the total b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_inertia_tensor"><a class="anchor" href="#_inertia_tensor"></a>6.6. Inertia Tensor</h3>
+<h3 id="_inertia_tensor"><a class="anchor" href="#_inertia_tensor"></a>6.7. Inertia Tensor</h3>
 <div class="paragraph">
 <p><strong>Description</strong>: The inertia tensor describes the body´s resistance to rotational motion in response to a torque.</p>
 </div>
@@ -1117,7 +1178,7 @@ That is, the sum of the angular momenta of different segments around the total b
 <p><strong>File structure</strong>:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Inertia tensor file structure and unit</caption>
+<caption class="title">Table 8. Inertia tensor file structure and unit</caption>
 <colgroup>
 <col style="width: 10%;">
 <col style="width: 10%;">
@@ -1161,7 +1222,7 @@ That is, the sum of the angular momenta of different segments around the total b
 </table>
 </div>
 <div class="sect2">
-<h3 id="_wrench_file"><a class="anchor" href="#_wrench_file"></a>6.7. Wrench file</h3>
+<h3 id="_wrench_file"><a class="anchor" href="#_wrench_file"></a>6.8. Wrench file</h3>
 <div class="paragraph">
 <p><strong>Description</strong>: This file shall contain wrench (force and torque) measured by a force sensor.</p>
 </div>
@@ -1175,7 +1236,7 @@ That is, the sum of the angular momenta of different segments around the total b
 <p><strong>File structure</strong>:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Wrench file structure and unit</caption>
+<caption class="title">Table 9. Wrench file structure and unit</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 14.2857%;">
@@ -1210,7 +1271,7 @@ That is, the sum of the angular momenta of different segments around the total b
 </table>
 </div>
 <div class="sect2">
-<h3 id="_ground_reaction_forces_file"><a class="anchor" href="#_ground_reaction_forces_file"></a>6.8. Ground Reaction Forces file</h3>
+<h3 id="_ground_reaction_forces_file"><a class="anchor" href="#_ground_reaction_forces_file"></a>6.9. Ground Reaction Forces file</h3>
 <div class="paragraph">
 <p><strong>Description</strong>: This file shall contain forces measured by force platforms.</p>
 </div>
@@ -1224,7 +1285,7 @@ That is, the sum of the angular momenta of different segments around the total b
 <p><strong>File structure</strong>:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Ground Reaction Forces file structure and unit</caption>
+<caption class="title">Table 10. Ground Reaction Forces file structure and unit</caption>
 <colgroup>
 <col style="width: 10%;">
 <col style="width: 10%;">
@@ -1271,7 +1332,7 @@ That is, the sum of the angular momenta of different segments around the total b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_electromyography_file"><a class="anchor" href="#_electromyography_file"></a>6.9. Electromyography file</h3>
+<h3 id="_electromyography_file"><a class="anchor" href="#_electromyography_file"></a>6.10. Electromyography file</h3>
 <div class="paragraph">
 <p><strong>Description</strong>: This file shall contain all the recorded EMG signals from the human subject.</p>
 </div>
@@ -1282,7 +1343,7 @@ That is, the sum of the angular momenta of different segments around the total b
 <p><strong>File format</strong>: <code>.csv</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. EMG file structure and unit</caption>
+<caption class="title">Table 11. EMG file structure and unit</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1313,7 +1374,7 @@ That is, the sum of the angular momenta of different segments around the total b
 <p>where <code>label_i</code> is to be a tag described in <a href="#tab:emg_tags">List of EMG muscles and labels considered. Suffixes <code>_l</code> and <code>_r</code> may be added to differentiate left and right limb, when needed.</a>.</p>
 </div>
 <table id="tab:emg_tags" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. List of EMG muscles and labels considered. Suffixes <code>_l</code> and <code>_r</code> may be added to differentiate left and right limb, when needed.</caption>
+<caption class="title">Table 12. List of EMG muscles and labels considered. Suffixes <code>_l</code> and <code>_r</code> may be added to differentiate left and right limb, when needed.</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1405,7 +1466,7 @@ That is, the sum of the angular momenta of different segments around the total b
 </table>
 </div>
 <div class="sect2">
-<h3 id="_gait_events_file"><a class="anchor" href="#_gait_events_file"></a>6.10. Gait events file</h3>
+<h3 id="_gait_events_file"><a class="anchor" href="#_gait_events_file"></a>6.11. Gait events file</h3>
 <div class="paragraph">
 <p><strong>Description</strong>: This file shall include all detected (or calculated) heel strike and toe off gait events.</p>
 </div>
@@ -1422,7 +1483,7 @@ That is, the sum of the angular momenta of different segments around the total b
 <p><strong>File content</strong>: See Table 3</p>
 </div>
 <table id="tab:gait_tags" class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. List of gait events and its considered labelling</caption>
+<caption class="title">Table 13. List of gait events and its considered labelling</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1457,7 +1518,7 @@ That is, the sum of the angular momenta of different segments around the total b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_physiological_data"><a class="anchor" href="#_physiological_data"></a>6.11. Physiological data</h3>
+<h3 id="_physiological_data"><a class="anchor" href="#_physiological_data"></a>6.12. Physiological data</h3>
 <div class="paragraph">
 <p><strong>Description</strong>: We gather in that concept measurements of the heart/breathing system activity and skin response:</p>
 </div>
@@ -1501,7 +1562,7 @@ Label: <code>ecg</code></p>
 <p><strong>File structure</strong>:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Physiological file structure</caption>
+<caption class="title">Table 14. Physiological file structure</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -1540,7 +1601,7 @@ Unmeasured dimensions should be discarded by removing the related label from the
 </div>
 </div>
 <div class="sect2">
-<h3 id="_testbed_platform_specific_data_recorded"><a class="anchor" href="#_testbed_platform_specific_data_recorded"></a>6.12. Testbed / Platform specific data recorded</h3>
+<h3 id="_testbed_platform_specific_data_recorded"><a class="anchor" href="#_testbed_platform_specific_data_recorded"></a>6.13. Testbed / Platform specific data recorded</h3>
 <div class="paragraph">
 <p><strong>Description</strong>: In some protocol, an instrumented device may have been designed to collect a set of sensor data.
 We consider the possibility of gathering sensed data in a common file under the following conditions:</p>
@@ -1569,7 +1630,7 @@ We consider the possibility of gathering sensed data in a common file under the 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_human_factor_metrics"><a class="anchor" href="#_human_factor_metrics"></a>6.13. Human Factor metrics</h3>
+<h3 id="_human_factor_metrics"><a class="anchor" href="#_human_factor_metrics"></a>6.14. Human Factor metrics</h3>
 <div class="paragraph">
 <p>We propose a common format for the set of files containing data regarding the user subjective evaluations of the experience of using an exoskeleton.
 We describe here all questionnaire-like output of an experimentation.
@@ -1593,7 +1654,7 @@ Here we focus on the representation of the questionnaires and related answers.</
 <p>We propose using <code>csv</code> format for both.</p>
 </div>
 <div class="sect3">
-<h4 id="_factor_meta_data_file"><a class="anchor" href="#_factor_meta_data_file"></a>6.13.1. Factor Meta Data File</h4>
+<h4 id="_factor_meta_data_file"><a class="anchor" href="#_factor_meta_data_file"></a>6.14.1. Factor Meta Data File</h4>
 <div class="paragraph">
 <p><strong>Description</strong>: This file contains the specification of each question of the questionnaire.
 That file should be part of the protocol itself.
@@ -1609,7 +1670,7 @@ It should not vary from an experimentation to another.</p>
 <p><strong>File structure</strong>: a table-like structure with the following content:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. Meta Data File structure sample</caption>
+<caption class="title">Table 15. Meta Data File structure sample</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1722,7 +1783,7 @@ A questionnaire definition may include more columns if this is needed for specia
 </div>
 </div>
 <div class="sect3">
-<h4 id="_factor_data_file"><a class="anchor" href="#_factor_data_file"></a>6.13.2. Factor Data File</h4>
+<h4 id="_factor_data_file"><a class="anchor" href="#_factor_data_file"></a>6.14.2. Factor Data File</h4>
 <div class="paragraph">
 <p><strong>Description</strong>: This file only contains the answers to each of the question asked.</p>
 </div>
@@ -1736,7 +1797,7 @@ A questionnaire definition may include more columns if this is needed for specia
 <p><strong>File structure</strong>: a table structure with the following content:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. Meta Data File structure sample</caption>
+<caption class="title">Table 16. Meta Data File structure sample</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
