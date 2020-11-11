@@ -407,7 +407,7 @@ We assume more exhaustive description will be provided with the documentation as
 </div>
 </div>
 <div class="sect1">
-<h2 id="_pi_sheet"><a class="anchor" href="#_pi_sheet"></a>4. PI Sheet</h2>
+<h2 id="pi_sheet"><a class="anchor" href="#pi_sheet"></a>4. PI Sheet</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>First we start reminding two concepts (this should be brought to a dedicated page):</p>
@@ -494,26 +494,15 @@ Selection in default type defined.</p>
 <p>Some item deserves more detailed explanation:</p>
 </div>
 <div class="sect2">
-<h3 id="_output_type_field"><a class="anchor" href="#_output_type_field"></a>4.1. output type field</h3>
+<h3 id="pi_output_type"><a class="anchor" href="#pi_output_type"></a>4.1. output type field</h3>
 <div class="paragraph">
-<p>The objective type is to define the expected structure of the PI.
-Ideally a unique value would ease everything, but we can envision several cases where we prefer keeping several values.
-A PI value is a <a href="https://fr.wikipedia.org/wiki/YAML">YAML</a> file with a structure like this one:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'vector'
-value: [0.96867, 1.01667, 0.98843, 0.95168, 0.87936, 0.94576, 0.87802, 0.87571, 0.81802, 0.82336]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The PI type is in that case a vector.
-We envision for now outputs of type <code>scalar</code>, <code>vector</code>, <code>matrix</code>, <code>labelled_matrix</code> and <code>string</code>.
-More details are available on the <a href="pi_spec.html#Output data" class="page">PI specification file</a> file.</p>
+<p>The output type field refers to the type of output file used to describe the Performance Indicators.
+The type provided must refer to one of the output types described in <a href="pi_spec.html#Output data" class="page">the PI specification file</a>.
+For now, format accepted are: <code>scalar</code>, <code>vector</code>, <code>matrix</code>, <code>vector_of_vector</code>, <code>vector_of_mtrix</code> and <code>string</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_intra_run_aggregation"><a class="anchor" href="#_intra_run_aggregation"></a>4.2. intra-run aggregation</h3>
+<h3 id="intra_run_aggregation"><a class="anchor" href="#intra_run_aggregation"></a>4.2. intra-run aggregation</h3>
 <div class="paragraph">
 <p>In the previous example, we see that the output is represented by a possibly long vector.
 The Intra-run aggregation information provides the system with an operator tool for “compressing” that vector into an (hopefully) more digest information.
@@ -547,7 +536,7 @@ Obviously it does not need to be filled for scalar output.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_inter_run_aggregation"><a class="anchor" href="#_inter_run_aggregation"></a>4.3. inter-run aggregation</h3>
+<h3 id="inter_run_aggregation"><a class="anchor" href="#inter_run_aggregation"></a>4.3. inter-run aggregation</h3>
 <div class="paragraph">
 <p>A similar operation is needed for combining the scores obtained for each run, to generate a PI for the whole experiment.
 Similar operators are proposed, but they will be computed on all the values obtained for all runs.

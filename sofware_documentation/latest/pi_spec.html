@@ -411,7 +411,7 @@ The expected launch command is the information required in the PI Algo template 
 <div class="sect2">
 <h3 id="_output_data"><a class="anchor" href="#_output_data"></a>3.2. Output data</h3>
 <div class="paragraph">
-<p>To be again generic, we are proposing the following output format:</p>
+<p>To be again generic, we are proposing the following strategy:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -424,9 +424,10 @@ The expected launch command is the information required in the PI Algo template 
 </ul>
 </div>
 <div class="paragraph">
-<p>The YAML file should contains keys <code>type</code> and <code>value</code>.
-We consider the following options:</p>
+<p>The accepted formats are now listed.</p>
 </div>
+<div class="sect3">
+<h4 id="_scalar"><a class="anchor" href="#_scalar"></a>3.2.1. scalar</h4>
 <div class="paragraph">
 <p>For a <code>scalar</code> output:</p>
 </div>
@@ -436,42 +437,101 @@ We consider the following options:</p>
 value: 42</code></pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_vector"><a class="anchor" href="#_vector"></a>3.2.2. vector</h4>
 <div class="paragraph">
 <p>For a <code>vector</code> output:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'vector'
+# label is optional
+label: [lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10]
 value: [0.96867, 1.01667, 0.98843, 0.95168, 0.87936, 0.94576, 0.87802, 0.87571, 0.81802, 0.82336]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For a <code>matrix</code> output:</p>
+<p>The key <code>label</code> is optional.
+If used, there should be as many labels as entries in the <code>value</code> vector.</p>
 </div>
+<div class="paragraph">
+<p>As a rule of thumb:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>using label makes sense if each entry of the vector refers to some different aspects (like a vector containing the step length, the step time, and the stride time)</p>
+</li>
+<li>
+<p>without label, the vector may be referring to the same measure repeated along the actions (like all step length measured).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_matrix"><a class="anchor" href="#_matrix"></a>3.2.3. matrix</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'matrix'
+# labels are optional
+row_label: [row_1, row_2, row_3]
+col_label: [col_1, col_2, col_3]
 value: [[1.0, 0, 0], [0, 1.0, 0], [0, 0, 1.0]]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For a vector including labels, a matrix is used, with the first row being the labels:</p>
+<p>Labels can be used to enhance the visualisation of the matrix.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vector_of_vectors"><a class="anchor" href="#_vector_of_vectors"></a>3.2.4. vector of vectors</h4>
+<div class="paragraph">
+<p>The difference with a matrix is that each vector may have different lengths</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'labelled_matrix'
-value: [['step_length', 'step_time', 'stride_time'], [0.5, 0.8, 0.4]]</code></pre>
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'vector_of_vector'
+values:
+ - label: [label_1, label_2]
+   value: [val_1, val_2]
+ - label: [label_1, label_2, label_3]
+   value: [val_1, val_2, val_3]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For a string output:</p>
+<p>Again, labels are optionals, but can be used to ease the display of the PI content.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_vector_of_matrices"><a class="anchor" href="#_vector_of_matrices"></a>3.2.5. vector of matrices</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: vector_of_matrix
+value:
+ - row_label: [row_1, row_2, row_3]
+   col_label: [col_1, col_2, col_3]
+   value: [[1, 2, 3], [4, 5, 6], [7,8,9]]
+ - row_label: [row_1, row_2, row_3]
+   col_label: [col_1, col_2, col_3]
+   value: [[1, 2, 3], [4, 5, 6], [7,8,9]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Again, labels are optional.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_string"><a class="anchor" href="#_string"></a>3.2.6. string</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">type: 'string'
 value: 'hip'</code></pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_general_considerations"><a class="anchor" href="#_general_considerations"></a>3.2.7. General considerations</h4>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -479,17 +539,35 @@ value: 'hip'</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The type of the output file is defined in the <a href="template.html#output type field" class="page">PI spec</a>, set in the general template sheet.
+The type of the output file of a given Performance Indicator is defined in the <a href="template.html#pi_output_type" class="page">PI spec</a>, set in the template sheet.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Note that providing several PI output through a unique source code or algorithm is an option provided to the developer.
-But in any case, we should have as many files generated as PI computed.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Providing several PI outputs through a unique source code or algorithm is an option provided to the developer.
+      But in any case, we should have as many files generated as PI computed.
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">
-<p>The name of each PI file has to be the same as the name of the PI, as specified in the PI table in the <a href="template.html#PI Sheet" class="page">name</a> entry.</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The name of each PI file has to be the same as the name of the PI, as specified in the PI table in the <a href="template.html#pi_sheet" class="page">name</a> entry.
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -498,8 +576,8 @@ But in any case, we should have as many files generated as PI computed.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-for non-scalar metrics, we suggest the definition of a metric to <em>compress</em> or aggregate the score (like using <code>mean</code> for providing a unique value from a vector result for a given run).
-      See the <a href="template.html#intra-run aggregation" class="page">intra-run aggregation definition</a>.
+For non-scalar metrics, we suggest the definition of a metric to <em>compress</em> or aggregate the score (like using <code>mean</code> for providing a unique value from a vector result for a given run).
+      See the <a href="template.html#intra_run_aggregation" class="page">intra-run aggregation definition</a>.
 </td>
 </tr>
 </table>
@@ -513,11 +591,12 @@ for non-scalar metrics, we suggest the definition of a metric to <em>compress</e
 <td class="content">
 The scoring is <em>ideally</em> performed <strong>per run</strong>.
          The score aggregation across the N runs (like how to extract an experiment <code>step_time</code> score given all the <code>step_time</code> vectors obtained in the successive runs) is specified in the template.
-         See the <a href="template.html#inter-run aggregation" class="page">inter-run aggregation definition</a>.
+         See the <a href="template.html#inter_run_aggregation" class="page">inter-run aggregation definition</a>.
          It will be automatically computed by the PI Manager
 </td>
 </tr>
 </table>
+</div>
 </div>
 </div>
 </div>
