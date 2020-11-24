@@ -1537,12 +1537,13 @@ That is, the sum of the angular momenta of different segments around the total b
 <p><strong>File format</strong>: <code>.yaml</code></p>
 </div>
 <div class="paragraph">
-<p><strong>File structure</strong>:Set of lines containing key: vector of values. Where the key is provided on the last column of <a href="#tab:gait_tags">List of gait events and its considered labelling</a>.</p>
+<p><strong>File structure</strong>:Set of lines containing <code>key: [vector, of, values]</code>.
+Possible keys are provided on the last column of <a href="#tab:gait_events">List of gait events and its considered labelling</a>.</p>
 </div>
 <div class="paragraph">
-<p><strong>File content</strong>: See Table 3</p>
+<p><strong>File content</strong>: See <a href="#tab:gait_events">List of gait events and its considered labelling</a>.</p>
 </div>
-<table id="tab:gait_tags" class="tableblock frame-all grid-all stretch">
+<table id="tab:gait_events" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 14. List of gait events and its considered labelling</caption>
 <colgroup>
 <col style="width: 50%;">
@@ -1578,7 +1579,146 @@ That is, the sum of the angular momenta of different segments around the total b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_physiological_data"><a class="anchor" href="#_physiological_data"></a>6.13. Physiological data</h3>
+<h3 id="_gait_parameter_file"><a class="anchor" href="#_gait_parameter_file"></a>6.13. Gait Parameter file</h3>
+<div class="paragraph">
+<p><strong>Description</strong>: This file shall include characteristics of the gait, if it is considered as input parameters detected (or calculated).</p>
+</div>
+<div class="paragraph">
+<p><strong>Filename root</strong>: <code>gaitParameters</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File format</strong>: <code>.yaml</code></p>
+</div>
+<div class="paragraph">
+<p><strong>File structure</strong>: Set of lines containing <code>label: [vector, of, values]</code>. Possible labels are provided on the last column of <a href="#tab:gait_param">List of gait events and its considered labelling and units</a>, together with the units.</p>
+</div>
+<div class="paragraph">
+<p><strong>File content</strong>: See <a href="#tab:gait_param">List of gait events and its considered labelling and units</a>.</p>
+</div>
+<table id="tab:gait_param" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 15. List of gait events and its considered labelling and units</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Gait Event</th>
+<th class="tableblock halign-left valign-top">Label</th>
+<th class="tableblock halign-left valign-top">type</th>
+<th class="tableblock halign-left valign-top">unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left Cadence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cadence_left</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">step/min</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left Walking Speed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>walking_speed_left</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m/s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left Stride Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>stride_time_left</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left Step Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>step_time_left</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left Stride Length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>stride_length_left</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left Step Length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>step_length_left</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left Step Width</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>step_width_left</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Left Single Support</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>single_suport_left</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Cadence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cadence_right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">step/min</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Walking Speed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>walking_speed_right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m/s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Stride Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>stride_time_right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Step Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>step_time_right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Stride Length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>stride_length_right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Step Length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>step_length_right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Step Width</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>step_width_right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Right Single Support</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>single_suport_right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Double Support</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>double_support</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scalar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_physiological_data"><a class="anchor" href="#_physiological_data"></a>6.14. Physiological data</h3>
 <div class="paragraph">
 <p><strong>Description</strong>: We gather in that concept measurements of the heart/breathing system activity and skin response:</p>
 </div>
@@ -1622,7 +1762,7 @@ Label: <code>ecg</code></p>
 <p><strong>File structure</strong>:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. Physiological file structure</caption>
+<caption class="title">Table 16. Physiological file structure</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -1661,7 +1801,7 @@ Unmeasured dimensions should be discarded by removing the related label from the
 </div>
 </div>
 <div class="sect2">
-<h3 id="_testbed_platform_specific_data_recorded"><a class="anchor" href="#_testbed_platform_specific_data_recorded"></a>6.14. Testbed / Platform specific data recorded</h3>
+<h3 id="_testbed_platform_specific_data_recorded"><a class="anchor" href="#_testbed_platform_specific_data_recorded"></a>6.15. Testbed / Platform specific data recorded</h3>
 <div class="paragraph">
 <p><strong>Description</strong>: In some protocol, an instrumented device may have been designed to collect a set of sensor data.
 We consider the possibility of gathering sensed data in a common file under the following conditions:</p>
@@ -1690,7 +1830,7 @@ We consider the possibility of gathering sensed data in a common file under the 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_human_factor_metrics"><a class="anchor" href="#_human_factor_metrics"></a>6.15. Human Factor metrics</h3>
+<h3 id="_human_factor_metrics"><a class="anchor" href="#_human_factor_metrics"></a>6.16. Human Factor metrics</h3>
 <div class="paragraph">
 <p>We propose a common format for the set of files containing data regarding the user subjective evaluations of the experience of using an exoskeleton.
 We describe here all questionnaire-like output of an experimentation.
@@ -1714,7 +1854,7 @@ Here we focus on the representation of the questionnaires and related answers.</
 <p>We propose using <code>csv</code> format for both.</p>
 </div>
 <div class="sect3">
-<h4 id="_factor_meta_data_file"><a class="anchor" href="#_factor_meta_data_file"></a>6.15.1. Factor Meta Data File</h4>
+<h4 id="_factor_meta_data_file"><a class="anchor" href="#_factor_meta_data_file"></a>6.16.1. Factor Meta Data File</h4>
 <div class="paragraph">
 <p><strong>Description</strong>: This file contains the specification of each question of the questionnaire.
 That file should be part of the protocol itself.
@@ -1730,7 +1870,7 @@ It should not vary from an experimentation to another.</p>
 <p><strong>File structure</strong>: a table-like structure with the following content:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 16. Meta Data File structure sample</caption>
+<caption class="title">Table 17. Meta Data File structure sample</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1843,7 +1983,7 @@ A questionnaire definition may include more columns if this is needed for specia
 </div>
 </div>
 <div class="sect3">
-<h4 id="_factor_data_file"><a class="anchor" href="#_factor_data_file"></a>6.15.2. Factor Data File</h4>
+<h4 id="_factor_data_file"><a class="anchor" href="#_factor_data_file"></a>6.16.2. Factor Data File</h4>
 <div class="paragraph">
 <p><strong>Description</strong>: This file only contains the answers to each of the question asked.</p>
 </div>
@@ -1857,7 +1997,7 @@ A questionnaire definition may include more columns if this is needed for specia
 <p><strong>File structure</strong>: a table structure with the following content:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 17. Meta Data File structure sample</caption>
+<caption class="title">Table 18. Meta Data File structure sample</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
