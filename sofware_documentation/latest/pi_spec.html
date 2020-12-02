@@ -70,16 +70,16 @@
     <a class="nav-link" href="index.html">Welcome</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="data_format.html">Input data format</a>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="model.html">Human model</a>
+    <a class="nav-link" href="template.html">Protocol template</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="pi_spec.html">Performance indicator</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="template.html">Protocol template</a>
+    <a class="nav-link" href="data_format.html">Input data format</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="model.html">Human model</a>
   </li>
 </ul>
   </li>
@@ -173,7 +173,7 @@ In the context of Eurobench, <code>PIs</code> are the bases for later performanc
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_a_bit_of_context_the_pi_manager"><a class="anchor" href="#_a_bit_of_context_the_pi_manager"></a>1.1. A bit of context: the PI Manager</h3>
+<h3 id="sec:pi_algo_general"><a class="anchor" href="#sec:pi_algo_general"></a>1.1. A bit of context: the PI Manager</h3>
 <div class="paragraph">
 <p>A key component of the Benchmarking Software is the <code>PI Manager</code>.
 It is called every time a new experiment is uploaded to the Benchmarking System.
@@ -298,7 +298,7 @@ That way, a future comparison of this experiment with another only consists in c
 </div>
 </div>
 <div class="sect1">
-<h2 id="_pi_repository_structure"><a class="anchor" href="#_pi_repository_structure"></a>2. PI repository structure</h2>
+<h2 id="sec:pi_repo_structure"><a class="anchor" href="#sec:pi_repo_structure"></a>2. PI repository structure</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To reach that structure, a PI code repository must have the following structure:</p>
@@ -597,6 +597,124 @@ The scoring is <em>ideally</em> performed <strong>per run</strong>.
 </tr>
 </table>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_deployment_methodology"><a class="anchor" href="#_code_deployment_methodology"></a>4. Code deployment methodology</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_generalities"><a class="anchor" href="#_generalities"></a>4.1. Generalities</h3>
+<div class="paragraph">
+<p>As mentioned <a href="#pi_algo_general">previously</a>, the benchmarking process is handled by the <code>PI manager</code>, that is in charge of launching the computation of the metrics, given the data collected in an experimentation.</p>
+</div>
+<div class="paragraph">
+<p>Based on the protocol the experiment is associated to, the <code>PI Manager</code> can deduce the algorithm(s) to be executed.</p>
+</div>
+<div class="paragraph">
+<p>For encapsulation matters, it has been decided to deploy the processing algorithm using Docker.
+This way, the <code>PI manager only handle a set of docker images</code>, independently of the language used for implementing the metric.</p>
+</div>
+<div class="paragraph">
+<p>As described in <a href="#sec:pi_repo_structure">PI Algo repository structure </a>, each metric code repository contains a <code>Dockerfile</code> that defines how to generate the Docker image.
+This file is used in the CI process to generate automatically the Docker image.</p>
+</div>
+<div class="paragraph">
+<p>Now the <code>PI manager</code> needs to know where to find that image.
+We propose using a common environment for hosting the generated images, currently named the <a href="https://hub.docker.com/orgs/eurobenchtest">Eurobenchtest hub</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The Docker location associated to an algorithm is supposed to be indicated in the Protocol Definition sheet, in the page related to <a href="template.html#sec:template_pi_algo" class="page">PI Algo specification</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_docker_hub_update_methodology"><a class="anchor" href="#_docker_hub_update_methodology"></a>4.2. Docker hub update methodology</h3>
+<div class="paragraph">
+<p>We propose the following methodology:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A PI code repository ready to be uploaded will be either migrated or forked within the <a href="https://github.com/eurobench">Eurobench Github organization</a>.
+It is named Eurobench PI repository in the rest of the text.</p>
+</li>
+<li>
+<p>Even if public code is encouraged, the Eurobench PI repository may be set as private on explicit request of the code owner.</p>
+</li>
+<li>
+<p>The Eurobench PI repository will at least contain two branches:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>a development branch into which some developments may be included</p>
+</li>
+<li>
+<p>a release branch in which only validated evolution from the development branch can be inserted.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The deployment of the docker image will be manually triggered by defining a tag, that should be associated to a commit on the release branch.</p>
+</li>
+<li>
+<p>The deployment to the docker hub is done then automatically through the CI/CD process.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the particular case that the code requires an update, and / or the code owner suggests a code evolution:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The update request can be triggered through a merge request, or a direct communication with the Eurobench maintainers.</p>
+</li>
+<li>
+<p>It has to be shown that the code update goes through the regression tests associated to the code.</p>
+</li>
+<li>
+<p>The update is brought to the development branch and tested.</p>
+</li>
+<li>
+<p>Once validated, the commit can be merged to the release branch, and a tag is created to trigger the docker image deployment to the Eurobench Docker Hub.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The code evolution may require some discussion, as such update may also require an update of the experiments already scored with the previous version of the docker image.
+      It could be automatically checked whether the input/output data used for the regression testing has changed in between the previous and the current version.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Only the Eurobench team should be authorized to enable the deployment of an updated docker image (step 4).
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
