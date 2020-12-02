@@ -203,7 +203,7 @@ The parameter being changed must be mentioned as a <a href="template.html#table_
 For each condition, we can have a set of runs.</p>
 </li>
 <li>
-<p>to involved several <strong>subjects</strong>: this is particularly relevant for experiments involving humans.
+<p>to involve several <strong>subjects</strong>: this is particularly relevant for experiments involving humans.
 In that case, we can considering having for each subject the execution of the same protocol, i.e involving potentially several conditions, and for each condition several repetitions or runs.</p>
 </li>
 </ul>
@@ -212,7 +212,7 @@ In that case, we can considering having for each subject the execution of the sa
 <div class="sect2">
 <h3 id="_filename_format_and_generalities"><a class="anchor" href="#_filename_format_and_generalities"></a>2.2. Filename format, and generalities</h3>
 <div class="paragraph">
-<p>Generally speaking pre-processed data should follow the following pattern:</p>
+<p>Generally speaking pre-processed data should follow the following contextualized pattern:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -220,24 +220,7 @@ In that case, we can considering having for each subject the execution of the sa
 </div>
 </div>
 <div class="paragraph">
-<p>where:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[type]</code> is a string related to the type of information stored in the file.
-This is the root name of the file.</p>
-</li>
-<li>
-<p>X, Y, Z are integer respectively associated the to the number of subjects involved, the number of different conditions being tested, and the number of repetitions per condition.</p>
-</li>
-<li>
-<p>The <code>subject</code> / <code>cond</code> / <code>run</code> namespaces are only used when it makes sense.
-An experiment involving a unique subject would have have pre-processed files following the pattern: <code>cond_Y_run_Z_[type].csv</code>.
-An experiment with various subject but unique condition would follow the pattern <code>subject_X_run_Z_[type].csv</code>.
-At the extreme, an experiment involving a unique subject (or an humanoid), with single condition and no repetition will be described by files with pattern: <code>[type].csv</code>.</p>
-</li>
-</ul>
+<p>The rationale behind this filename format is described in <a href="#experiment.adoc">The Experimental data page</a>.</p>
 </div>
 <div class="paragraph">
 <p>Unless specified if different, all datafile recorded will have a name using this pattern.
@@ -289,12 +272,12 @@ Each data file is now described, focusing on the type of information stored (ext
 <td class="tableblock halign-left valign-top"><p class="tableblock">Segments descriptions files</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">subject_N_anthropometry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subject_N_info</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">yaml</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Anthropometry description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subject description (metric and/or other)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">humanoid_N_anthropometry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">humanoid_N_info</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">yaml</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Humanoid description</p></td>
 </tr>
@@ -440,7 +423,7 @@ The protocol should indicate the appropriate option to use.
 </table>
 </div>
 <div class="paragraph">
-<p><strong>Option 1: one file per device</strong></p>
+<p><em>Option 1: one file per device</em></p>
 </div>
 <div class="paragraph">
 <p>The two files will share the same structure (based on the information stored in it), but will only differ by their name:</p>
@@ -513,7 +496,7 @@ The protocol should indicate the appropriate option to use.
 </tbody>
 </table>
 <div class="paragraph">
-<p><strong>Option 2: one file gathering the two devices</strong></p>
+<p><em>Option 2: one file gathering the two devices</em></p>
 </div>
 <div class="paragraph">
 <p>A single file is provided, and use the generic format <code>subject_N_run_R_wrench.csv</code>.
@@ -652,7 +635,7 @@ From this file, the number of joints, its labels and the degrees of freedom can 
 <p><strong>Number of files</strong>: all necessary files to describe the complete robotic structure.</p>
 </div>
 <div class="paragraph">
-<p><strong>Name of the file</strong>: The main urdf file which includes the rest of urdf files should be named as <code>humanoid_N_anthropometry</code>, where <code>N</code> is the humanoid number.</p>
+<p><strong>Name of the file</strong>: The main urdf file which includes the rest of urdf files should be named as <code>robot_N_info</code>, where <code>N</code> is the humanoid number.</p>
 </div>
 <div class="paragraph">
 <p><strong>File format</strong>: <code>.urdf</code>.
@@ -681,22 +664,24 @@ This is needed to enable dynamic simulators to model the human-WR system.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_human_anthropometric_measures_file"><a class="anchor" href="#_human_anthropometric_measures_file"></a>3.3. Human anthropometric measures file</h3>
+<h3 id="_human_information_file"><a class="anchor" href="#_human_information_file"></a>3.3. Human information file</h3>
 <div class="paragraph">
-<p><strong>Description</strong>: This file shall contain all the anthropometric measurements of the human body segment, as detailed in the <a href="model.html#sec_hbs" class="page">model document</a>.</p>
+<p><strong>Description</strong>: This file shall contain all information related to the subject, such as the anthropometric measurements of the human body segment (as detailed in the <a href="model.html#sec_hbs" class="page">model document</a>), gender, age, &#8230;&#8203; .</p>
 </div>
 <div class="paragraph">
-<p><strong>Name of the file</strong>: subject_N_anthropometry, where N = subject’s number.
+<p><strong>Name of the file</strong>: <code>subject_N_info</code>, where N = subject’s number.
 Use appropriate leading zeros for R and N to ensure proper ordering of files.</p>
 </div>
 <div class="paragraph">
-<p><strong>File format</strong>: .yaml</p>
+<p><strong>File format</strong>: <code>.yaml</code></p>
 </div>
 <div class="paragraph">
-<p><strong>File structure</strong>: Set of lines containing key: value where the key is provided in the <a href="model.html#table_body_segment" class="page">body segment table</a>.</p>
+<p><strong>File structure</strong>: Set of lines containing key: value.
+For anthropometric measures, the keys should be the ones presented in <a href="model.html#table_body_segment" class="page">body segment table</a>.
+In any case, the entries provided should follow the protocol requirement.</p>
 </div>
 <div class="paragraph">
-<p><strong>Units</strong>: Meters</p>
+<p><strong>Units</strong>: Various</p>
 </div>
 </div>
 <div class="sect2">
@@ -705,10 +690,10 @@ Use appropriate leading zeros for R and N to ensure proper ordering of files.</p
 <p><strong>Description</strong>: This file shall contain all the anthropometric measurements from the humanoid robot mapped to the above proposed human segments (see Table 2 and Figure 3).</p>
 </div>
 <div class="paragraph">
-<p><strong>Name of the file</strong>: humanoid_N_anthropometry, where N = humanoid’s identifier.</p>
+<p><strong>Name of the file</strong>: <code>robot_N_info</code>, where N = humanoid’s identifier.</p>
 </div>
 <div class="paragraph">
-<p><strong>File format</strong>: .yaml</p>
+<p><strong>File format</strong>: <code>.yaml</code></p>
 </div>
 <div class="paragraph">
 <p><strong>File structure</strong>: Set of lines containing key: value where the key must contain the corresponding robot segment name.</p>
@@ -732,7 +717,7 @@ It can also contain subject behavior constraints set by the experimenter (ask th
 <p><strong>File format</strong>: .yaml</p>
 </div>
 <div class="paragraph">
-<p><strong>File name</strong>: <code>testbed.yaml</code>.</p>
+<p><strong>File name</strong>: <code>condition.yaml</code></p>
 </div>
 <div class="paragraph">
 <p><strong>File structure</strong>: Set of lines containing key: values.
@@ -788,7 +773,7 @@ Data can be provided as the device drivers provide them  (e.g. <code>c3d</code>,
 </div>
 </div>
 <div class="sect1">
-<h2 id="_pre_processed_data_files"><a class="anchor" href="#_pre_processed_data_files"></a>6. Pre-Processed Data Files</h2>
+<h2 id="sec:pre_processed_data"><a class="anchor" href="#sec:pre_processed_data"></a>6. Pre-Processed Data Files</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This set of files should contain all the data processed from the raw data and needed for running a specific benchmarking routine.
@@ -2105,10 +2090,10 @@ These are the files that they have produced to be compatible with the EUROBENCH 
 <div class="ulist">
 <ul>
 <li>
-<p><code>subject_01_anthropometry.yaml</code></p>
+<p><code>subject_01_info.yaml</code></p>
 </li>
 <li>
-<p><code>subject_02_anthropometry.yaml</code></p>
+<p><code>subject_02_info.yaml</code></p>
 </li>
 </ul>
 </div>
@@ -2138,7 +2123,7 @@ These are the files that they have produced to be compatible with the EUROBENCH 
 <div class="ulist">
 <ul>
 <li>
-<p><code>testbed.yaml</code></p>
+<p><code>condition.yaml</code></p>
 </li>
 </ul>
 </div>
@@ -2176,7 +2161,7 @@ The experiment was then repeated changing the support level of the exoskeleton</
 <div class="ulist">
 <ul>
 <li>
-<p><code>anthropometry.yaml</code></p>
+<p><code>info.yaml</code></p>
 </li>
 </ul>
 </div>
@@ -2196,7 +2181,7 @@ The experiment was then repeated changing the support level of the exoskeleton</
 <div class="ulist">
 <ul>
 <li>
-<p><code>cond_{01-02}_testbed.yaml</code></p>
+<p><code>condition_{01-02}.yaml</code></p>
 </li>
 </ul>
 </div>
@@ -2205,7 +2190,7 @@ The experiment was then repeated changing the support level of the exoskeleton</
 </div>
 <div class="paragraph">
 <p>label <code>subject</code> is discarded as a unique subject is considered.
-The level of exoskeleton support is specified through a variable in <code>cond_01_testbed.yaml</code> and <code>cond_02_testbed.yaml</code> files.</p>
+The level of exoskeleton support is specified through a variable in <code>condition_01.yaml</code> and <code>condition_02.yaml</code> files.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2233,7 +2218,7 @@ The level of exoskeleton support is specified through a variable in <code>cond_0
 <div class="ulist">
 <ul>
 <li>
-<p><code>humanoid.urdf</code></p>
+<p><code>robot_info.urdf</code></p>
 </li>
 </ul>
 </div>
@@ -2256,7 +2241,7 @@ The level of exoskeleton support is specified through a variable in <code>cond_0
 <div class="ulist">
 <ul>
 <li>
-<p><code>testbed.yaml</code></p>
+<p><code>condition.yaml</code></p>
 </li>
 </ul>
 </div>
@@ -2310,7 +2295,7 @@ An instrumented chair was used, which is collecting a set of measures, in a form
 <div class="ulist">
 <ul>
 <li>
-<p><code>cond_{01-02}_testbed.yaml</code></p>
+<p><code>condition_{01-02}.yaml</code></p>
 </li>
 </ul>
 </div>
@@ -2318,7 +2303,7 @@ An instrumented chair was used, which is collecting a set of measures, in a form
 </ul>
 </div>
 <div class="paragraph">
-<p>The eyes status (open/closed) is set through a parameter in files <code>cond_01_testbed.yaml</code> and <code>cond_02_testbed.yaml</code>.</p>
+<p>The eyes status (open/closed) is set through a parameter in files <code>condition_01.yaml</code> and <code>condition_02.yaml</code>.</p>
 </div>
 </div>
 </div>
