@@ -648,27 +648,23 @@ The Docker location associated to an algorithm is supposed to be indicated in th
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>A PI code repository ready to be uploaded will be either migrated or forked within the <a href="https://github.com/eurobench">Eurobench Github organization</a>.
+<p>A PI code repository ready to be uploaded to the Eurobench server is forked within the <a href="https://github.com/eurobench">Eurobench Github organization</a>.
 It is named Eurobench PI repository in the rest of the text.</p>
 </li>
 <li>
 <p>Even if public code is encouraged, the Eurobench PI repository may be set as private on explicit request of the code owner.</p>
 </li>
 <li>
-<p>The Eurobench PI repository will at least contain two branches:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>a development branch into which some developments may be included</p>
+<p>Before going further, the CI process installed in the main repository must be successful.
+The CI process handle several check such as <code>csv</code> and <code>yaml</code> format checking, and regression tests using reference data placed into the repository.</p>
 </li>
 <li>
-<p>a release branch in which only validated evolution from the development branch can be inserted.</p>
-</li>
-</ul>
-</div>
+<p>The branch <code>master</code> (as an example) is pushed to the forked repository.
+As an indication, the forked repo should indicate that <code>This branch is even with aremazeilles:master.</code> (if the base repo is hosted by <code>aremazeilles</code>).</p>
 </li>
 <li>
-<p>The deployment of the docker image will be manually triggered by defining a tag, that should be associated to a commit on the release branch.</p>
+<p>Manually, a release is created on the forked repository, from the Github interface.
+The tag that is created should use <a href="https://semver.org/">semantic versioning</a>, like <code>vMAJOR.MINOR.PATCH</code>.</p>
 </li>
 <li>
 <p>The deployment to the docker hub is done then automatically through the CI/CD process.</p>
@@ -687,10 +683,10 @@ It is named Eurobench PI repository in the rest of the text.</p>
 <p>It has to be shown that the code update goes through the regression tests associated to the code.</p>
 </li>
 <li>
-<p>The update is brought to the development branch and tested.</p>
+<p>The update is brought to the fork and tested.</p>
 </li>
 <li>
-<p>Once validated, the commit can be merged to the release branch, and a tag is created to trigger the docker image deployment to the Eurobench Docker Hub.</p>
+<p>Once validated, a new release and tag is created to trigger the docker image deployment to the Eurobench Docker Hub.</p>
 </li>
 </ol>
 </div>
@@ -715,6 +711,7 @@ The code evolution may require some discussion, as such update may also require 
 </td>
 <td class="content">
 Only the Eurobench team should be authorized to enable the deployment of an updated docker image (step 4).
+This is why we decided to fork all developments into the Eurobench namespace.
 </td>
 </tr>
 </table>
