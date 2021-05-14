@@ -125,8 +125,127 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document gathers documentation on software aspects related to the <a href="http://eurobench2020.eu/">Eurobench</a> project:</p>
+<p>This document gathers documentation on software aspects related to the <a href="http://eurobench2020.eu/">Eurobench</a> project.</p>
 </div>
+<div class="paragraph">
+<p>The Eurobench website containing all protocols is accessible <a href="http://15.237.22.1/home">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to"><a class="anchor" href="#_how_to"></a>How to</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_define_a_new_protocol"><a class="anchor" href="#_define_a_new_protocol"></a>Define a new protocol</h3>
+<div class="paragraph">
+<p>A protocol definition should contain:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>general information of the protocol</p>
+<div class="ulist">
+<ul>
+<li>
+<p>used to fill the Eurobench database and to configure the automation tools</p>
+</li>
+<li>
+<p>template provided and commented in <a href="template.html#Eurobench template" class="page">Eurobench protocol templates</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>extended documentation to prepare the testbed and / or to conduct the experimentation</p>
+<div class="ulist">
+<ul>
+<li>
+<p>that information would be uploaded on the Eurobench website, and made available at the protocol webpage</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Algorithms implementing the performance indicators, following the Eurobench policy</p>
+<div class="ulist">
+<ul>
+<li>
+<p>more information can be found in <a href="pi_spec.html#Performance Indicator Specification" class="page">Performance Indicator Algorithm specification</a>.</p>
+</li>
+<li>
+<p>example of algorithms implemented can be found on the <a href="https://github.com/eurobench">Eurobench GitHub repository</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For now, there is no methodology to upload automatically a protocol.
+Needed information is to be transmitted to the Eurobench team.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search_a_protocol_and_conduct_an_experiment"><a class="anchor" href="#_search_a_protocol_and_conduct_an_experiment"></a>Search a protocol and conduct an experiment</h3>
+<div class="paragraph">
+<p><em>1. Search for an adequate protocol</em></p>
+</div>
+<div class="paragraph">
+<p>The <a href="http://15.237.22.1/home">Eurobench software website</a> protocol section enables accessing to all registered protocols.
+The filtering mechanism provide a key-words based search of protocol.</p>
+</div>
+<div class="paragraph">
+<p><em>2. Read the protocol documentation</em></p>
+</div>
+<div class="paragraph">
+<p>Once selected, the protocol description should provide a general overview of the purpose, objectives, metrics and execution methodology of the protocol.
+When required, additional documentation is provided on the left area.</p>
+</div>
+<div class="paragraph">
+<p>From this information, the reader should be able to prepare and execute experimentations.</p>
+</div>
+<div class="paragraph">
+<p><em>3. Do the experimentation and prepare experimental data for upload</em></p>
+</div>
+<div class="paragraph">
+<p>The documentation should provide indications, if needed, on how to adjust the data collected during an experimentation.
+We are encouraging the use of standard data format.
+It is described in the <a href="data_format.html#Eurobench Data Format" class="page">Eurobench Data Format</a>.
+If not directly provided by the testbed, the protocol documentation should explain you how to convert the Raw data into such format.</p>
+</div>
+<div class="paragraph">
+<p>Also, as the metric computation is handled automatically through the Eurobench website, we also provide some guidelines on how to name the collected datafiles.
+See <a href="experiment_data.html#Experimental data" class="page">Organisation of experimental dataset</a>.
+But, once more, this is the protocol description that should guide you in that process.</p>
+</div>
+<div class="paragraph">
+<p><em>4. Upload the experimental data and benchmark</em></p>
+</div>
+<div class="paragraph">
+<p>Through the website, a user can log an experiment conducted.
+Given the protocol used, and after datafile upload is able to compute the related metrics automatically, and make them available to the experimenter.
+Comparison with other similar experiments will be provided soon.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The Eurobench website is a tool under development, and actively updated.
+    If any description is unclear or missing, please let us know so that we can work on improving it.
+    Thx!
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_site_content"><a class="anchor" href="#_site_content"></a>Site content</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
