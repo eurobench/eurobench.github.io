@@ -6,7 +6,7 @@
     <title>Performance Indicator Specification :: Eurobench framework documentation</title>
     <link rel="canonical" href="https://eurobench.github.io/sofware_documentation/latest/pi_spec.html">
     <meta name="keywords" content="AsciiDoc">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
   <body class="article">
@@ -405,7 +405,7 @@ Thus, if the experiment contains 5 runs, the algorithm will be called 5 times.</
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The expected launch command is the information required in the PI Algo template entry named <a href="template.html#Input command" class="page">input command</a>.
+The expected launch command is the information required in the PI Algo template entry named <a href="template.html#Input command" class="xref page">input command</a>.
 </td>
 </tr>
 </table>
@@ -542,7 +542,7 @@ value: 'hip'</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The type of the output file of a given Performance Indicator is defined in the <a href="template.html#pi_output_type" class="page">PI spec</a>, set in the template sheet.
+The type of the output file of a given Performance Indicator is defined in the <a href="template.html#pi_output_type" class="xref page">PI spec</a>, set in the template sheet.
 </td>
 </tr>
 </table>
@@ -567,7 +567,7 @@ Providing several PI outputs through a unique source code or algorithm is an opt
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-The name of each PI file has to be the same as the name of the PI, as specified in the PI table in the <a href="template.html#pi_sheet" class="page">name</a> entry.
+The name of each PI file has to be the same as the name of the PI, as specified in the PI table in the <a href="template.html#pi_sheet" class="xref page">name</a> entry.
 </td>
 </tr>
 </table>
@@ -580,7 +580,7 @@ The name of each PI file has to be the same as the name of the PI, as specified 
 </td>
 <td class="content">
 For non-scalar metrics, we suggest the definition of a metric to <em>compress</em> or aggregate the score (like using <code>mean</code> for providing a unique value from a vector result for a given run).
-      See the <a href="template.html#intra_run_aggregation" class="page">intra-run aggregation definition</a>.
+      See the <a href="template.html#intra_run_aggregation" class="xref page">intra-run aggregation definition</a>.
 </td>
 </tr>
 </table>
@@ -594,7 +594,7 @@ For non-scalar metrics, we suggest the definition of a metric to <em>compress</e
 <td class="content">
 The scoring is <em>ideally</em> performed <strong>per run</strong>.
          The score aggregation across the N runs (like how to extract an experiment <code>step_time</code> score given all the <code>step_time</code> vectors obtained in the successive runs) is specified in the template.
-         See the <a href="template.html#inter_run_aggregation" class="page">inter-run aggregation definition</a>.
+         See the <a href="template.html#inter_run_aggregation" class="xref page">inter-run aggregation definition</a>.
          It will be automatically computed by the PI Manager
 </td>
 </tr>
@@ -634,7 +634,7 @@ We propose using a common environment for hosting the generated images, currentl
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The Docker location associated to an algorithm is supposed to be indicated in the Protocol Definition sheet, in the page related to <a href="template.html#sec:template_pi_algo" class="page">PI Algo specification</a>.
+The Docker location associated to an algorithm is supposed to be indicated in the Protocol Definition sheet, in the page related to <a href="template.html#sec:template_pi_algo" class="xref page">PI Algo specification</a>.
 </td>
 </tr>
 </table>

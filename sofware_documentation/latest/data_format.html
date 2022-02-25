@@ -6,7 +6,7 @@
     <title>Eurobench Data Format :: Eurobench framework documentation</title>
     <link rel="canonical" href="https://eurobench.github.io/sofware_documentation/latest/data_format.html">
     <meta name="keywords" content="AsciiDoc">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../../_/css/site.css">
   </head>
   <body class="article">
@@ -145,7 +145,7 @@ Other motivations for the specification of a unique data format and conventions 
 </ul>
 </div>
 <div class="paragraph">
-<p>Any request to extend / change format described here should be done following the <a href="#README.adoc#Modification Instructions" class="page unresolved">contribution policy</a>.</p>
+<p>Any request to extend / change format described here should be done following the <a href="#README.adoc#Modification Instructions" class="xref unresolved">contribution policy</a>.</p>
 </div>
 </div>
 </div>
@@ -202,7 +202,7 @@ We would thus acquire several times the same set of information, but the data wi
 <li>
 <p>to consider different <strong>conditions</strong>: in that case, a setting is changed.
 It can be a configuration of the testbed or environmental settings (augment the slope angle), a configuration of the robotic system (support level of the exoskeleton), or an indication to the user (redo the operation with eyes closed).
-The parameter being changed must be mentioned as a <a href="template.html#table_controlled_variables" class="page">controlled variable</a>, and must be listed in the <a href="#_testbed_configuration_file">testbed configuration file</a>.
+The parameter being changed must be mentioned as a <a href="template.html#table_controlled_variables" class="xref page">controlled variable</a>, and must be listed in the <a href="#_testbed_configuration_file">testbed configuration file</a>.
 For each condition, we can have a set of runs.</p>
 </li>
 <li>
@@ -219,7 +219,7 @@ In that case, we can considering having for each subject the execution of the sa
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>subject_X_cond_Y_run_Z_[type].csv</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">subject_X_cond_Y_run_Z_[type].csv</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -329,7 +329,7 @@ As an example, the following table:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>label_1; label_2; label_3
+<pre class="highlightjs highlight"><code class="language-none hljs">label_1; label_2; label_3
 value_1; value_2; value_3</code></pre>
 </div>
 </div>
@@ -669,7 +669,7 @@ This is needed to enable dynamic simulators to model the human-WR system.</p>
 <div class="sect2">
 <h3 id="_human_information_file"><a class="anchor" href="#_human_information_file"></a>3.3. Human information file</h3>
 <div class="paragraph">
-<p><strong>Description</strong>: This file shall contain all information related to the subject, such as the anthropometric measurements of the human body segment (as detailed in the <a href="model.html#sec_hbs" class="page">model document</a>), gender, age, &#8230;&#8203; .</p>
+<p><strong>Description</strong>: This file shall contain all information related to the subject, such as the anthropometric measurements of the human body segment (as detailed in the <a href="model.html#sec_hbs" class="xref page">model document</a>), gender, age, &#8230;&#8203; .</p>
 </div>
 <div class="paragraph">
 <p><strong>Name of the file</strong>: <code>subject_N_info</code>, where N = subject’s number.
@@ -680,7 +680,7 @@ Use appropriate leading zeros for R and N to ensure proper ordering of files.</p
 </div>
 <div class="paragraph">
 <p><strong>File structure</strong>: Set of lines containing key: value.
-For anthropometric measures, the keys should be the ones presented in <a href="model.html#table_body_segment" class="page">body segment table</a>.
+For anthropometric measures, the keys should be the ones presented in <a href="model.html#table_body_segment" class="xref page">body segment table</a>.
 In any case, the entries provided should follow the protocol requirement.</p>
 </div>
 <div class="paragraph">
@@ -752,7 +752,7 @@ garment_param_j: 2</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>All controlled variables, as defined in the <a href="template.html#table_controlled_variables" class="page">template spec</a> should be defined in that file.</p>
+<p>All controlled variables, as defined in the <a href="template.html#table_controlled_variables" class="xref page">template spec</a> should be defined in that file.</p>
 </div>
 </td>
 </tr>
@@ -792,7 +792,7 @@ We will work together with you to create the required data file type.</p>
 <div class="sect2">
 <h3 id="_joint_angles_file"><a class="anchor" href="#_joint_angles_file"></a>6.1. Joint angles file</h3>
 <div class="paragraph">
-<p><strong>Description</strong>: This file shall contain the time-series of all measured joint angles, expressed in YXZ Cardan Angles, as defined in the <a href="model.html#sec_angles" class="page">Angle Definition</a> section.</p>
+<p><strong>Description</strong>: This file shall contain the time-series of all measured joint angles, expressed in YXZ Cardan Angles, as defined in the <a href="model.html#sec_angles" class="xref page">Angle Definition</a> section.</p>
 </div>
 <div class="paragraph">
 <p><strong>filename root</strong>: <code>jointAngles</code>  where N = subject’s number and R = run number.
@@ -848,7 +848,7 @@ Use appropriate leading zeros for R and N to ensure proper ordering of files.</p
 </tbody>
 </table>
 <div class="paragraph">
-<p>Joint labels should refer to the names provided within the <a href="model.html#fig_joint_center_label" class="page">human model document</a>.</p>
+<p>Joint labels should refer to the names provided within the <a href="model.html#fig_joint_center_label" class="xref page">human model document</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -909,7 +909,7 @@ Use appropriate leading zeros for R and N to ensure proper ordering of files.</p
 </tbody>
 </table>
 <div class="paragraph">
-<p>Joint labels should refer to the names provided within the <a href="model.html#fig_joint_center_label" class="page">human model document</a>.</p>
+<p>Joint labels should refer to the names provided within the <a href="model.html#fig_joint_center_label" class="xref page">human model document</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -964,7 +964,7 @@ Use appropriate leading zeros for R and N to ensure proper ordering of files.</p
 </tbody>
 </table>
 <div class="paragraph">
-<p>Joint labels should refer to the names provided within the <a href="model.html#fig_joint_center_label" class="page">human model document</a>.</p>
+<p>Joint labels should refer to the names provided within the <a href="model.html#fig_joint_center_label" class="xref page">human model document</a>.</p>
 </div>
 </div>
 <div class="sect2">
